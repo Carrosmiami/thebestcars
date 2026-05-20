@@ -173,7 +173,7 @@ name:"Ford Mustang GT",
 price:23500,
 year:2020,
 imgs:[
-"https://images.unsplash.com/photo-1503376780353-7e6692767b70",
+"[https://images.unsplash.com/photo-1503376780353-7e6692767b70](https://github.com/8ba79c37-09c3-4db1-a946-026c9b89f32b)",
 "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023",
 "https://images.unsplash.com/photo-1542362567-b07e54358753"
 ]
