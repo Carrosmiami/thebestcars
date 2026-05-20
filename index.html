@@ -2,262 +2,413 @@
 <html lang="es">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The Best Cars Miami</title>
 
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon"
+href="ChatGPT%20Image%2020%20may%202026,%2017_26_46.png">
 
 <style>
 
-/* ===== BODY ===== */
+/* BODY */
 
 body{
 margin:0;
 font-family:Arial;
-color:white;
 min-height:100vh;
 
 background:
-linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.92)),
-url("ChatGPT Image 20 may 2026, 17_26_46.png");
+linear-gradient(rgba(0,0,0,0.92),rgba(0,0,0,0.96)),
+url('ChatGPT%20Image%2020%20may%202026,%2017_26_46.png');
 
-background-size:cover;
+background-size:500px;
 background-position:center;
 background-repeat:no-repeat;
 background-attachment:fixed;
+
+color:white;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 
 header{
-padding:30px;
+
+background:linear-gradient(90deg,#000814,#001d3d);
+
+padding:35px;
+
 text-align:center;
-backdrop-filter:blur(6px);
-background:rgba(0,0,0,0.35);
-box-shadow:0 0 30px rgba(0,255,255,0.15);
-border-bottom:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 4px 25px rgba(0,255,255,0.2);
+
+border-bottom:1px solid rgba(255,255,255,0.1);
+
 }
+
+/* TITLE */
 
 header h1{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:20px;
 
-font-size:65px;
+cursor:pointer;
+
+font-size:55px;
+
 font-weight:900;
-letter-spacing:3px;
+
+letter-spacing:2px;
+
 text-transform:uppercase;
 
-background:linear-gradient(90deg,#00e5ff,#00ff99);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-text-shadow:
-0 0 10px rgba(0,255,255,0.9),
-0 0 20px rgba(0,255,255,0.7),
-0 0 40px rgba(0,255,255,0.5);
+margin:20px 0;
 
 font-family:Arial Black,sans-serif;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:15px;
+
+color:white;
+
+text-shadow:
+0 0 10px rgba(0,255,255,0.8),
+0 0 20px rgba(0,255,255,0.6),
+0 0 40px rgba(0,255,255,0.4);
+
 }
+
+/* LOGO */
 
 .logo{
-width:90px;
-height:90px;
+
+width:110px;
+
+height:110px;
+
 object-fit:contain;
-border-radius:14px;
-box-shadow:0 0 35px rgba(0,255,255,0.5);
+
+filter:
+drop-shadow(0 0 10px cyan)
+drop-shadow(0 0 20px cyan);
+
+animation:glow 2s infinite alternate;
+
 }
 
-/* ===== SEARCH ===== */
+@keyframes glow{
+
+from{
+
+transform:scale(1);
+
+filter:
+drop-shadow(0 0 10px cyan)
+drop-shadow(0 0 20px cyan);
+
+}
+
+to{
+
+transform:scale(1.05);
+
+filter:
+drop-shadow(0 0 20px #00e5ff)
+drop-shadow(0 0 40px #00ff99);
+
+}
+
+}
+
+/* SEARCH */
 
 .controls{
-padding:25px;
+
+padding:20px;
+
 text-align:center;
+
 }
 
 input{
-padding:15px;
-border:none;
-border-radius:14px;
-width:80%;
-max-width:420px;
 
-background:rgba(0,0,0,0.45);
+padding:14px;
+
+border:none;
+
+border-radius:10px;
+
+width:80%;
+
+max-width:320px;
+
+background:#111827;
+
 color:white;
-font-size:16px;
+
+font-size:15px;
+
 outline:none;
 
-box-shadow:0 0 20px rgba(0,255,255,0.2);
+box-shadow:0 0 10px rgba(0,255,255,0.1);
+
 }
 
-/* ===== GRID ===== */
+/* GRID */
 
 .grid{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-padding:30px;
-max-width:1400px;
-margin:auto;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:20px;
+
+padding:20px;
+
 }
 
-/* ===== CARD ===== */
+/* CARD */
 
 .card{
-background:rgba(17,24,39,0.88);
-backdrop-filter:blur(8px);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:18px;
+
+background:#151b2e;
+
+border-radius:15px;
+
 overflow:hidden;
+
 cursor:pointer;
+
 transition:0.3s;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+
 }
 
 .card:hover{
-transform:translateY(-8px);
+
+transform:translateY(-5px);
+
 box-shadow:0 0 25px rgba(0,255,255,0.3);
+
 }
 
 .card img{
+
 width:100%;
+
 height:220px;
+
 object-fit:cover;
+
 }
 
+/* INFO */
+
 .info{
+
 padding:15px;
+
 }
 
 .info h3{
+
 margin:0;
-font-size:24px;
+
+font-size:22px;
+
 }
 
 .price{
+
 color:#00ff99;
-font-size:24px;
+
 font-weight:bold;
-margin-top:10px;
+
+font-size:20px;
+
 }
 
-/* ===== MODAL ===== */
+/* MODAL */
 
 .modal{
+
 display:none;
+
 position:fixed;
+
 top:0;
+
 left:0;
+
 width:100%;
+
 height:100%;
-background:rgba(0,0,0,0.95);
+
+background:rgba(0,0,0,0.96);
+
 overflow:auto;
+
 z-index:999;
+
 }
 
 .modal-content{
+
 background:#111827;
+
 margin:40px auto;
+
 padding:20px;
+
 width:90%;
-max-width:900px;
-border-radius:20px;
-box-shadow:0 0 40px rgba(0,255,255,0.2);
+
+max-width:750px;
+
+border-radius:15px;
+
+box-shadow:0 0 30px rgba(0,255,255,0.2);
+
 }
+
+/* CLOSE */
 
 .close{
+
 float:right;
+
 font-size:30px;
+
 cursor:pointer;
+
 color:red;
+
 }
+
+/* SLIDER */
 
 .slider img{
+
 width:100%;
-margin-top:15px;
-border-radius:14px;
+
+margin-bottom:12px;
+
+border-radius:12px;
+
 }
 
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 
 .btn{
+
 display:block;
+
 text-align:center;
+
 padding:14px;
-border-radius:12px;
+
+border-radius:10px;
+
 margin-top:12px;
+
 text-decoration:none;
+
 color:white;
+
 cursor:pointer;
+
 border:none;
-font-size:16px;
+
 font-weight:bold;
+
+font-size:15px;
+
 transition:0.3s;
+
 }
 
 .btn:hover{
-transform:scale(1.03);
+
+opacity:0.85;
+
+transform:scale(1.02);
+
 }
 
 .whatsapp{
+
 background:#25D366;
+
 }
 
 .edit{
+
 background:#1e88e5;
+
 }
 
 .delete{
+
 background:#e53935;
+
 }
 
 .add{
+
 background:#ff9800;
+
 }
 
-/* ===== ADMIN ===== */
+/* ADMIN */
 
 #adminPanel{
+
 display:none;
+
 position:fixed;
+
 bottom:20px;
+
 right:20px;
 
-background:rgba(0,0,0,0.95);
+background:#111827;
+
 padding:20px;
-border-radius:18px;
+
+border-radius:15px;
+
 width:300px;
 
 z-index:1000;
 
-box-shadow:0 0 30px rgba(0,255,255,0.25);
+box-shadow:0 0 25px rgba(0,255,255,0.2);
+
+}
+
+#adminPanel h3{
+
+text-align:center;
+
 }
 
 #adminPanel input{
+
 width:100%;
+
 margin-bottom:10px;
-}
-
-/* ===== MOBILE ===== */
-
-@media(max-width:700px){
-
-header h1{
-font-size:38px;
-flex-direction:column;
-}
-
-.logo{
-width:70px;
-height:70px;
-}
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -266,9 +417,11 @@ height:70px;
 
 <h1 id="secret">
 
-<img src="logo.png" class="logo">
+<img
+src="ChatGPT%20Image%2020%20may%202026,%2017_26_46.png"
+class="logo">
 
-THE BEST CARS MIAMI
+<span>The Best Cars Miami</span>
 
 </h1>
 
@@ -276,7 +429,8 @@ THE BEST CARS MIAMI
 
 <div class="controls">
 
-<input id="search"
+<input
+id="search"
 placeholder="Buscar carro..."
 onkeyup="render()">
 
@@ -290,18 +444,25 @@ onkeyup="render()">
 
 <div class="modal-content">
 
-<span class="close" onclick="closeModal()">✖</span>
+<span
+class="close"
+onclick="closeModal()">
+
+✖
+
+</span>
 
 <div id="modalBody"></div>
 
 </div>
+
 </div>
 
-<!-- ADMIN -->
+<!-- ADMIN PANEL -->
 
 <div id="adminPanel">
 
-<h2>🔒 Admin Panel</h2>
+<h3>🔒 Admin Panel</h3>
 
 <input id="name" placeholder="Nombre">
 
@@ -309,10 +470,16 @@ onkeyup="render()">
 
 <input id="year" placeholder="Año">
 
-<input id="imgs" placeholder="Fotos URL1,URL2,URL3">
+<input
+id="imgs"
+placeholder="Fotos URL1,URL2,URL3">
 
-<button class="btn add" onclick="saveCar()">
+<button
+class="btn add"
+onclick="saveCar()">
+
 Guardar Carro
+
 </button>
 
 </div>
@@ -322,61 +489,80 @@ Guardar Carro
 <script type="module">
 
 import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
+
 getDatabase,
 ref,
 push,
 onValue,
 remove,
 update
+
 }
 
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-/* ===== FIREBASE ===== */
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyB7yKOWqufXFKD7j_QOLXazwJ3T4rL5fkE",
+apiKey:
+"AIzaSyB7yKOWqufXFKD7j_QOLXazwJ3T4rL5fkE",
 
-authDomain: "thebestcars-miami.firebaseapp.com",
+authDomain:
+"thebestcars-miami.firebaseapp.com",
 
-databaseURL: "https://thebestcars-miami-default-rtdb.firebaseio.com",
+databaseURL:
+"https://thebestcars-miami-default-rtdb.firebaseio.com",
 
-projectId: "thebestcars-miami",
+projectId:
+"thebestcars-miami",
 
-storageBucket: "thebestcars-miami.firebasestorage.app",
+storageBucket:
+"thebestcars-miami.firebasestorage.app",
 
-messagingSenderId: "323195561825",
+messagingSenderId:
+"323195561825",
 
-appId: "1:323195561825:web:f48bc075e99ba152c40720",
+appId:
+"1:323195561825:web:f48bc075e99ba152c40720",
 
-measurementId: "G-G4MN1SBMT6"
+measurementId:
+"G-G4MN1SBMT6"
 
 };
+
+/* INIT */
 
 const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 
-let cars = [];
-let currentKeys = [];
-let editKey = null;
-
 const carsRef = ref(db,"cars");
 
-/* ===== LOAD CARS ===== */
+let cars = [];
+
+let currentKeys = [];
+
+let editKey = null;
+
+/* REALTIME */
 
 onValue(carsRef,(snapshot)=>{
 
 cars = [];
+
 currentKeys = [];
 
 snapshot.forEach(child=>{
 
 cars.push(child.val());
+
 currentKeys.push(child.key);
 
 });
@@ -385,11 +571,12 @@ render();
 
 });
 
-/* ===== RENDER ===== */
+/* RENDER */
 
 window.render = function(){
 
-let grid = document.getElementById("grid");
+let grid =
+document.getElementById("grid");
 
 let search =
 document.getElementById("search")
@@ -399,15 +586,21 @@ document.getElementById("search")
 grid.innerHTML = "";
 
 cars
+
 .filter(car=>
-car.name.toLowerCase().includes(search)
+
+car.name
+.toLowerCase()
+.includes(search)
+
 )
 
 .forEach((car,i)=>{
 
 grid.innerHTML += `
 
-<div class="card" onclick="openCar(${i})">
+<div class="card"
+onclick="openCar(${i})">
 
 <img src="${car.imgs[0]}">
 
@@ -417,7 +610,11 @@ grid.innerHTML += `
 
 <p>Año: ${car.year}</p>
 
-<p class="price">$${car.price}</p>
+<p class="price">
+
+$${car.price}
+
+</p>
 
 </div>
 
@@ -429,21 +626,35 @@ grid.innerHTML += `
 
 }
 
-/* ===== OPEN CAR ===== */
+/* OPEN CAR */
 
 window.openCar = function(i){
 
 let car = cars[i];
 
-let imgs = car.imgs
-.map(img=>`<img src="${img}">`)
+let imgs =
+
+car.imgs
+
+.map(img=>
+
+`<img src="${img}">`
+
+)
+
 .join("");
 
-document.getElementById("modalBody").innerHTML = `
+document.getElementById("modalBody")
+
+.innerHTML = `
 
 <h2>${car.name}</h2>
 
-<p class="price">$${car.price}</p>
+<p class="price">
+
+$${car.price}
+
+</p>
 
 <p>Año: ${car.year}</p>
 
@@ -453,21 +664,24 @@ ${imgs}
 
 </div>
 
-<a class="btn whatsapp"
-href="https://wa.me/17542141799">
+<a
+class="btn whatsapp"
+href="https://wa.me/13050000000">
 
 WhatsApp
 
 </a>
 
-<button class="btn edit"
+<button
+class="btn edit"
 onclick="editCar(${i})">
 
 ✏ Editar
 
 </button>
 
-<button class="btn delete"
+<button
+class="btn delete"
 onclick="deleteCar(${i})">
 
 🗑 Borrar
@@ -476,19 +690,23 @@ onclick="deleteCar(${i})">
 
 `;
 
-document.getElementById("modal").style.display="block";
+document.getElementById("modal")
+
+.style.display = "block";
 
 }
 
-/* ===== CLOSE MODAL ===== */
+/* CLOSE */
 
 window.closeModal = function(){
 
-document.getElementById("modal").style.display="none";
+document.getElementById("modal")
+
+.style.display = "none";
 
 }
 
-/* ===== SAVE CAR ===== */
+/* SAVE */
 
 window.saveCar = async function(){
 
@@ -502,12 +720,23 @@ let year =
 document.getElementById("year").value;
 
 let imgs =
+
 document.getElementById("imgs")
+
 .value
+
 .split(",")
+
 .map(x=>x.trim());
 
-if(!name || !price || !year || imgs.length===0){
+if(
+
+!name ||
+!price ||
+!year ||
+imgs.length===0
+
+){
 
 alert("Completa todo");
 
@@ -515,29 +744,43 @@ return;
 
 }
 
+/* EDIT */
+
 if(editKey){
 
-await update(ref(db,"cars/"+editKey),{
+await update(
 
+ref(db,"cars/"+editKey),
+
+{
 name,
 price,
 year,
 imgs
+}
 
-});
+);
 
 editKey = null;
 
-}else{
+}
 
-await push(carsRef,{
+/* NEW */
 
+else{
+
+await push(
+
+carsRef,
+
+{
 name,
 price,
 year,
 imgs
+}
 
-});
+);
 
 }
 
@@ -547,7 +790,7 @@ alert("Guardado");
 
 }
 
-/* ===== EDIT ===== */
+/* EDIT CAR */
 
 window.editCar = function(i){
 
@@ -555,29 +798,37 @@ let car = cars[i];
 
 editKey = currentKeys[i];
 
-document.getElementById("name").value = car.name;
+document.getElementById("name").value =
+car.name;
 
-document.getElementById("price").value = car.price;
+document.getElementById("price").value =
+car.price;
 
-document.getElementById("year").value = car.year;
+document.getElementById("year").value =
+car.year;
 
 document.getElementById("imgs").value =
 car.imgs.join(",");
 
 document.getElementById("adminPanel")
-.style.display="block";
+
+.style.display = "block";
 
 closeModal();
 
 }
 
-/* ===== DELETE ===== */
+/* DELETE */
 
 window.deleteCar = async function(i){
 
 if(confirm("Borrar carro?")){
 
-await remove(ref(db,"cars/"+currentKeys[i]));
+await remove(
+
+ref(db,"cars/"+currentKeys[i])
+
+);
 
 closeModal();
 
@@ -585,7 +836,7 @@ closeModal();
 
 }
 
-/* ===== CLEAR ===== */
+/* CLEAR */
 
 function clearForm(){
 
@@ -596,11 +847,13 @@ document.getElementById("imgs").value="";
 
 }
 
-/* ===== SECRET ADMIN ===== */
+/* SECRET ADMIN */
 
 let clicks = 0;
 
-document.getElementById("secret").onclick = ()=>{
+document.getElementById("secret")
+
+.onclick = ()=>{
 
 clicks++;
 
@@ -611,15 +864,18 @@ let pass = prompt("Password");
 if(pass==="Khloe070304"){
 
 document.getElementById("adminPanel")
-.style.display="block";
 
-}else{
+.style.display = "block";
+
+}
+
+else{
 
 alert("Incorrecto");
 
 }
 
-clicks=0;
+clicks = 0;
 
 }
 
