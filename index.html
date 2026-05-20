@@ -3,16 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>The Best Cars Miami</title>
+
+<link rel="icon" type="image/png" href="logo.png">
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#0b0f19;
+background:
+linear-gradient(rgba(0,0,0,0.92),rgba(0,0,0,0.96)),
+url('logo.png');
+background-size:500px;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
 color:white;
 }
+
+/* HEADER */
 
 header{
 background:linear-gradient(90deg,#000814,#001d3d);
@@ -28,56 +39,106 @@ font-size:55px;
 font-weight:900;
 letter-spacing:2px;
 text-transform:uppercase;
-background:linear-gradient(90deg,#00e5ff,#00ff99);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+margin:20px 0;
+font-family:Arial Black,sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+color:white;
 text-shadow:
 0 0 10px rgba(0,255,255,0.8),
 0 0 20px rgba(0,255,255,0.6),
 0 0 40px rgba(0,255,255,0.4);
-margin:20px 0;
-font-family:Arial Black,sans-serif;
 }
+
+.logo{
+width:95px;
+height:95px;
+object-fit:contain;
+filter:
+drop-shadow(0 0 10px cyan)
+drop-shadow(0 0 20px cyan);
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{
+transform:scale(1);
+filter:
+drop-shadow(0 0 10px cyan)
+drop-shadow(0 0 20px cyan);
+}
+to{
+transform:scale(1.05);
+filter:
+drop-shadow(0 0 20px #00e5ff)
+drop-shadow(0 0 40px #00ff99);
+}
+}
+
+/* CONTROLS */
+
 .controls{
 padding:15px;
 text-align:center;
 }
 
 input{
-padding:10px;
+padding:12px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 width:80%;
-max-width:300px;
+max-width:320px;
+background:#111827;
+color:white;
+font-size:15px;
+outline:none;
+box-shadow:0 0 10px rgba(0,255,255,0.1);
 }
+
+/* GRID */
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-padding:15px;
+gap:20px;
+padding:20px;
 }
 
 .card{
 background:#151b2e;
-border-radius:12px;
+border-radius:15px;
 overflow:hidden;
 cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px rgba(0,255,255,0.3);
 }
 
 .card img{
 width:100%;
-height:180px;
+height:200px;
 object-fit:cover;
 }
 
 .info{
-padding:10px;
+padding:15px;
+}
+
+.info h3{
+margin:0;
+font-size:22px;
 }
 
 .price{
-color:#00e676;
+color:#00ff99;
 font-weight:bold;
+font-size:20px;
 }
 
 /* MODAL */
@@ -89,7 +150,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.95);
+background:rgba(0,0,0,0.96);
 overflow:auto;
 z-index:999;
 }
@@ -99,60 +160,84 @@ background:#111827;
 margin:40px auto;
 padding:20px;
 width:90%;
-max-width:700px;
-border-radius:12px;
+max-width:750px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,255,255,0.2);
 }
 
 .close{
 float:right;
-font-size:25px;
+font-size:30px;
 cursor:pointer;
 color:red;
 }
 
 .slider img{
 width:100%;
-margin-bottom:10px;
-border-radius:10px;
+margin-bottom:12px;
+border-radius:12px;
 }
+
+/* BUTTONS */
 
 .btn{
 display:block;
 text-align:center;
-padding:12px;
-border-radius:8px;
-margin-top:10px;
+padding:14px;
+border-radius:10px;
+margin-top:12px;
 text-decoration:none;
 color:white;
 cursor:pointer;
 border:none;
+font-weight:bold;
+font-size:15px;
+transition:0.3s;
 }
 
-.whatsapp{background:#25D366;}
-.edit{background:#1e88e5;}
-.delete{background:#e53935;}
-.add{background:#ff9800;}
+.btn:hover{
+opacity:0.85;
+transform:scale(1.02);
+}
 
-/* ADMIN */
+.whatsapp{
+background:#25D366;
+}
+
+.edit{
+background:#1e88e5;
+}
+
+.delete{
+background:#e53935;
+}
+
+.add{
+background:#ff9800;
+}
+
+/* ADMIN PANEL */
 
 #adminPanel{
 display:none;
 position:fixed;
 bottom:20px;
 right:20px;
-background:#111;
-padding:15px;
-border-radius:12px;
-width:280px;
+background:#111827;
+padding:20px;
+border-radius:15px;
+width:300px;
 z-index:1000;
+box-shadow:0 0 25px rgba(0,255,255,0.2);
+}
+
+#adminPanel h3{
+text-align:center;
 }
 
 #adminPanel input{
 width:100%;
-margin-bottom:8px;
-padding:8px;
-border:none;
-border-radius:6px;
+margin-bottom:10px;
 }
 
 </style>
@@ -161,11 +246,21 @@ border-radius:6px;
 <body>
 
 <header>
-<h1 id="secret">🚗 The Best Cars Miami</h1>
+
+<h1 id="secret">
+<img src="logo.png" class="logo">
+<span>The Best Cars Miami</span>
+</h1>
+
 </header>
 
 <div class="controls">
-<input id="search" placeholder="Buscar carro..." onkeyup="render()">
+
+<input
+id="search"
+placeholder="Buscar carro..."
+onkeyup="render()">
+
 </div>
 
 <div class="grid" id="grid"></div>
@@ -181,6 +276,7 @@ border-radius:6px;
 <div id="modalBody"></div>
 
 </div>
+
 </div>
 
 <!-- ADMIN -->
@@ -197,7 +293,9 @@ border-radius:6px;
 
 <input id="imgs" placeholder="Fotos URL1,URL2,URL3">
 
-<button class="btn add" onclick="saveCar()">Guardar Carro</button>
+<button class="btn add" onclick="saveCar()">
+Guardar Carro
+</button>
 
 </div>
 
@@ -205,7 +303,8 @@ border-radius:6px;
 
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
 getDatabase,
@@ -215,18 +314,29 @@ onValue,
 remove,
 update
 }
-
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 const firebaseConfig = {
+
 apiKey: "AIzaSyB7yKOWqufXFKD7j_QOLXazwJ3T4rL5fkE",
+
 authDomain: "thebestcars-miami.firebaseapp.com",
-databaseURL: "https://thebestcars-miami-default-rtdb.firebaseio.com",
+
+databaseURL:
+"https://thebestcars-miami-default-rtdb.firebaseio.com",
+
 projectId: "thebestcars-miami",
-storageBucket: "thebestcars-miami.firebasestorage.app",
+
+storageBucket:
+"thebestcars-miami.firebasestorage.app",
+
 messagingSenderId: "323195561825",
-appId: "1:323195561825:web:f48bc075e99ba152c40720",
+
+appId:
+"1:323195561825:web:f48bc075e99ba152c40720",
+
 measurementId: "G-G4MN1SBMT6"
+
 };
 
 const app = initializeApp(firebaseConfig);
@@ -238,6 +348,8 @@ let currentKeys = [];
 let editKey = null;
 
 const carsRef = ref(db,"cars");
+
+/* REALTIME */
 
 onValue(carsRef,(snapshot)=>{
 
@@ -256,21 +368,28 @@ render();
 
 });
 
+/* RENDER */
+
 window.render = function(){
 
 let grid = document.getElementById("grid");
 
-let search = document.getElementById("search").value.toLowerCase();
+let search =
+document.getElementById("search")
+.value.toLowerCase();
 
 grid.innerHTML = "";
 
-cars.filter(car=>car.name.toLowerCase().includes(search))
+cars
+.filter(car =>
+car.name.toLowerCase().includes(search))
 
 .forEach((car,i)=>{
 
 grid.innerHTML += `
 
-<div class="card" onclick="openCar(${i})">
+<div class="card"
+onclick="openCar(${i})">
 
 <img src="${car.imgs[0]}">
 
@@ -292,62 +411,96 @@ grid.innerHTML += `
 
 }
 
+/* OPEN CAR */
+
 window.openCar = function(i){
 
 let car = cars[i];
 
-let imgs = car.imgs.map(img=>`<img src="${img}">`).join("");
+let imgs =
+car.imgs
+.map(img=>`<img src="${img}">`)
+.join("");
 
-document.getElementById("modalBody").innerHTML = `
+document.getElementById("modalBody")
+.innerHTML = `
 
 <h2>${car.name}</h2>
 
 <p class="price">$${car.price}</p>
 
-<div class="slider">${imgs}</div>
+<p>Año: ${car.year}</p>
 
-<a class="btn whatsapp" href="https://wa.me/13050000000">WhatsApp</a>
+<div class="slider">
+${imgs}
+</div>
 
-<button class="btn edit" onclick="editCar(${i})">✏ Editar</button>
+<a class="btn whatsapp"
+href="https://wa.me/13050000000">
+WhatsApp
+</a>
 
-<button class="btn delete" onclick="deleteCar(${i})">🗑 Borrar</button>
+<button class="btn edit"
+onclick="editCar(${i})">
+✏ Editar
+</button>
+
+<button class="btn delete"
+onclick="deleteCar(${i})">
+🗑 Borrar
+</button>
 
 `;
 
-document.getElementById("modal").style.display="block";
+document.getElementById("modal")
+.style.display="block";
 
 }
+
+/* CLOSE */
 
 window.closeModal = function(){
 
-document.getElementById("modal").style.display="none";
+document.getElementById("modal")
+.style.display="none";
 
 }
 
+/* SAVE */
+
 window.saveCar = async function(){
 
-let name = document.getElementById("name").value;
+let name =
+document.getElementById("name").value;
 
-let price = document.getElementById("price").value;
+let price =
+document.getElementById("price").value;
 
-let year = document.getElementById("year").value;
+let year =
+document.getElementById("year").value;
 
-let imgs = document.getElementById("imgs").value
+let imgs =
+document.getElementById("imgs")
+.value
 .split(",")
 .map(x=>x.trim());
 
 if(!name || !price || !year || imgs.length===0){
+
 alert("Completa todo");
 return;
+
 }
 
 if(editKey){
 
 await update(ref(db,"cars/"+editKey),{
+
 name,
 price,
 year,
 imgs
+
 });
 
 editKey = null;
@@ -355,10 +508,12 @@ editKey = null;
 }else{
 
 await push(carsRef,{
+
 name,
 price,
 year,
 imgs
+
 });
 
 }
@@ -369,31 +524,42 @@ alert("Guardado");
 
 }
 
+/* EDIT */
+
 window.editCar = function(i){
 
 let car = cars[i];
 
 editKey = currentKeys[i];
 
-document.getElementById("name").value = car.name;
+document.getElementById("name").value =
+car.name;
 
-document.getElementById("price").value = car.price;
+document.getElementById("price").value =
+car.price;
 
-document.getElementById("year").value = car.year;
+document.getElementById("year").value =
+car.year;
 
-document.getElementById("imgs").value = car.imgs.join(",");
+document.getElementById("imgs").value =
+car.imgs.join(",");
 
-document.getElementById("adminPanel").style.display="block";
+document.getElementById("adminPanel")
+.style.display="block";
 
 closeModal();
 
 }
+
+/* DELETE */
 
 window.deleteCar = async function(i){
 
 if(confirm("Borrar carro?")){
 
-await remove(ref(db,"cars/"+currentKeys[i]));
+await remove(
+ref(db,"cars/"+currentKeys[i])
+);
 
 closeModal();
 
@@ -401,21 +567,23 @@ closeModal();
 
 }
 
+/* CLEAR */
+
 function clearForm(){
 
 document.getElementById("name").value="";
-
 document.getElementById("price").value="";
-
 document.getElementById("year").value="";
-
 document.getElementById("imgs").value="";
 
 }
 
+/* SECRET ADMIN */
+
 let clicks = 0;
 
-document.getElementById("secret").onclick = ()=>{
+document.getElementById("secret")
+.onclick = ()=>{
 
 clicks++;
 
@@ -425,7 +593,8 @@ let pass = prompt("Password");
 
 if(pass==="Khloe070304"){
 
-document.getElementById("adminPanel").style.display="block";
+document.getElementById("adminPanel")
+.style.display="block";
 
 }else{
 
@@ -442,5 +611,4 @@ clicks=0;
 </script>
 
 </body>
-</html>
 </html>
