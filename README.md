@@ -2,100 +2,133 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AutoStock Miami</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miami Auto Dealer</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-    }
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0b0f19;
+color:white;
+}
 
-    header {
-      background: #111;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+.hero{
+background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1494905998402-395d579af36f');
+background-size:cover;
+padding:80px 20px;
+text-align:center;
+}
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      padding: 15px;
-    }
+.hero h1{
+font-size:40px;
+}
 
-    .car {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
+.hero p{
+color:#ccc;
+}
 
-    .car img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
+.btn{
+background:#00c853;
+padding:12px 20px;
+display:inline-block;
+margin-top:15px;
+border-radius:8px;
+color:white;
+text-decoration:none;
+}
 
-    .car-info {
-      padding: 10px;
-    }
+.section{
+padding:20px;
+}
 
-    .price {
-      color: green;
-      font-weight: bold;
-      font-size: 18px;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+gap:15px;
+}
 
-    .btn {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-      padding: 10px;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-    }
+.card{
+background:#151b2e;
+border-radius:12px;
+overflow:hidden;
+}
 
-    .btn:hover {
-      background: #1ebe5d;
-    }
-  </style>
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+}
+
+.card .info{
+padding:10px;
+}
+
+.price{
+color:#00e676;
+font-weight:bold;
+}
+
+.whatsapp{
+display:block;
+text-align:center;
+background:#25D366;
+padding:10px;
+margin-top:10px;
+color:white;
+text-decoration:none;
+border-radius:8px;
+}
+</style>
+
 </head>
 
 <body>
 
-<header>
-  <h1>🚗 AutoStock Miami</h1>
-  <p>Carros disponibles en inventario</p>
-</header>
+<div class="hero">
+<h1>🚗 Miami Auto Dealer</h1>
+<p>Luxury | Salvage | Clean Title Inventory</p>
+<a class="btn" href="https://wa.me/13050000000">Contactar Ahora</a>
+</div>
 
-<div class="container">
+<div class="section">
+<h2>🔥 Inventario Disponible</h2>
 
-  <div class="car">
-    <img src="https://via.placeholder.com/400x200" alt="carro">
-    <div class="car-info">
-      <h3>Honda Civic 2020</h3>
-      <p>Millas: 55,000</p>
-      <p class="price">$13,000</p>
-      <a class="btn" href="https://wa.me/13050000000">Contactar</a>
-    </div>
-  </div>
+<div class="grid">
 
-  <div class="car">
-    <img src="https://via.placeholder.com/400x200" alt="carro">
-    <div class="car-info">
-      <h3>Toyota Corolla 2018</h3>
-      <p>Millas: 80,000</p>
-      <p class="price">$9,500</p>
-      <a class="btn" href="https://wa.me/13050000000">Contactar</a>
-    </div>
-  </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+<div class="info">
+<h3>BMW 3 Series 2020</h3>
+<p>Millas: 45,000</p>
+<p class="price">$18,500</p>
+<a class="whatsapp" href="https://wa.me/13050000000">WhatsApp</a>
+</div>
+</div>
 
+<div class="card">
+<img src="https://images.unsplash.com/photo-1493238792000-8113da705763">
+<div class="info">
+<h3>Mercedes C-Class 2019</h3>
+<p>Millas: 52,000</p>
+<p class="price">$21,000</p>
+<a class="whatsapp" href="https://wa.me/13050000000">WhatsApp</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542362567-b07e54358753">
+<div class="info">
+<h3>Toyota Camry 2021</h3>
+<p>Millas: 30,000</p>
+<p class="price">$17,000</p>
+<a class="whatsapp" href="https://wa.me/13050000000">WhatsApp</a>
+</div>
+</div>
+
+</div>
 </div>
 
 </body>
