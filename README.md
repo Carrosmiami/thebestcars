@@ -238,7 +238,7 @@ if(secretClicks >= 5){
 
 let pass = prompt("🔒 Password:");
 
-if(pass === "miami123"){
+if(pass === Khloe070304"){
 
 document.getElementById("adminPanel").style.display="block";
 
