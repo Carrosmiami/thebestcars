@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +6,7 @@
 <title>The Best Cars Miami</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial;
@@ -30,8 +31,8 @@ text-align:center;
 
 input{
 padding:10px;
-border-radius:8px;
 border:none;
+border-radius:8px;
 width:80%;
 max-width:300px;
 }
@@ -66,6 +67,7 @@ font-weight:bold;
 }
 
 /* MODAL */
+
 .modal{
 display:none;
 position:fixed;
@@ -109,14 +111,16 @@ margin-top:10px;
 text-decoration:none;
 color:white;
 cursor:pointer;
+border:none;
 }
 
 .whatsapp{background:#25D366;}
 .edit{background:#1e88e5;}
 .delete{background:#e53935;}
-.add{background:#ff9800;margin-top:10px;}
+.add{background:#ff9800;}
 
 /* ADMIN */
+
 #adminPanel{
 display:none;
 position:fixed;
@@ -133,9 +137,10 @@ z-index:1000;
 width:100%;
 margin-bottom:8px;
 padding:8px;
-border-radius:6px;
 border:none;
+border-radius:6px;
 }
+
 </style>
 </head>
 
@@ -152,103 +157,137 @@ border:none;
 <div class="grid" id="grid"></div>
 
 <!-- MODAL -->
+
 <div id="modal" class="modal">
+
 <div class="modal-content">
+
 <span class="close" onclick="closeModal()">✖</span>
+
 <div id="modalBody"></div>
+
 </div>
 </div>
 
 <!-- ADMIN -->
+
 <div id="adminPanel">
 
 <h3>🔒 Admin Panel</h3>
 
 <input id="name" placeholder="Nombre">
-<input id="price" placeholder="Precio">
-<input id="year" placeholder="Año">
-<input id="imgs" placeholder="Fotos (URL1,URL2,URL3)">
 
-<button class="btn add" onclick="saveCar()">Guardar / Agregar</button>
+<input id="price" placeholder="Precio">
+
+<input id="year" placeholder="Año">
+
+<input id="imgs" placeholder="Fotos URL1,URL2,URL3">
+
+<button class="btn add" onclick="saveCar()">Guardar Carro</button>
 
 </div>
 
-<script>
+<!-- FIREBASE -->
 
-let editIndex = null;
+<script type="module">
 
-let clicks = 0;
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-document.getElementById("secret").onclick = () => {
-clicks++;
-if(clicks >= 5){
-let pass = prompt("Password:");
-if(pass === "Khloe070304"){
-document.getElementById("adminPanel").style.display="block";
-}else{
-alert("Incorrecto");
+import {
+getDatabase,
+ref,
+push,
+onValue,
+remove,
+update
 }
-clicks = 0;
-}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyB7yKOWqufXFKD7j_QOLXazwJ3T4rL5fkE",
+authDomain: "thebestcars-miami.firebaseapp.com",
+databaseURL: "https://thebestcars-miami-default-rtdb.firebaseio.com",
+projectId: "thebestcars-miami",
+storageBucket: "thebestcars-miami.firebasestorage.app",
+messagingSenderId: "323195561825",
+appId: "1:323195561825:web:f48bc075e99ba152c40720",
+measurementId: "G-G4MN1SBMT6"
 };
 
-let cars = JSON.parse(localStorage.getItem("cars")) || [
-{
-name:"Ford Mustang GT",
-price:23500,
-year:2020,
-imgs:[
-"https://images.unsplash.com/photo-1503376780353-7e6692767b70",
-"https://images.unsplash.com/photo-1525609004556-c46c7d6cf023"
-]
-},
-{
-name:"BMW 3 Series",
-price:18500,
-year:2020,
-imgs:[
-"https://images.unsplash.com/photo-1493238792000-8113da705763"
-]
-}
-];
+const app = initializeApp(firebaseConfig);
 
-function save(){
-localStorage.setItem("cars", JSON.stringify(cars));
-}
+const db = getDatabase(app);
 
-function render(){
+let cars = [];
+let currentKeys = [];
+let editKey = null;
+
+const carsRef = ref(db,"cars");
+
+onValue(carsRef,(snapshot)=>{
+
+cars = [];
+currentKeys = [];
+
+snapshot.forEach(child=>{
+
+cars.push(child.val());
+
+currentKeys.push(child.key);
+
+});
+
+render();
+
+});
+
+window.render = function(){
 
 let grid = document.getElementById("grid");
+
 let search = document.getElementById("search").value.toLowerCase();
 
-grid.innerHTML="";
+grid.innerHTML = "";
 
-cars.filter(c=>c.name.toLowerCase().includes(search))
+cars.filter(car=>car.name.toLowerCase().includes(search))
+
 .forEach((car,i)=>{
 
 grid.innerHTML += `
+
 <div class="card" onclick="openCar(${i})">
+
 <img src="${car.imgs[0]}">
+
 <div class="info">
+
 <h3>${car.name}</h3>
+
 <p>Año: ${car.year}</p>
+
 <p class="price">$${car.price}</p>
+
 </div>
+
 </div>
+
 `;
 
 });
 
 }
 
-function openCar(i){
+window.openCar = function(i){
 
 let car = cars[i];
 
 let imgs = car.imgs.map(img=>`<img src="${img}">`).join("");
 
 document.getElementById("modalBody").innerHTML = `
+
 <h2>${car.name}</h2>
+
 <p class="price">$${car.price}</p>
 
 <div class="slider">${imgs}</div>
@@ -256,76 +295,138 @@ document.getElementById("modalBody").innerHTML = `
 <a class="btn whatsapp" href="https://wa.me/13050000000">WhatsApp</a>
 
 <button class="btn edit" onclick="editCar(${i})">✏ Editar</button>
+
 <button class="btn delete" onclick="deleteCar(${i})">🗑 Borrar</button>
+
 `;
 
 document.getElementById("modal").style.display="block";
 
 }
 
-function closeModal(){
+window.closeModal = function(){
+
 document.getElementById("modal").style.display="none";
+
 }
 
-function saveCar(){
+window.saveCar = async function(){
 
 let name = document.getElementById("name").value;
+
 let price = document.getElementById("price").value;
+
 let year = document.getElementById("year").value;
-let imgs = document.getElementById("imgs").value.split(",").map(x=>x.trim());
 
-if(editIndex !== null){
+let imgs = document.getElementById("imgs").value
+.split(",")
+.map(x=>x.trim());
 
-cars[editIndex] = {name,price,year,imgs};
-editIndex = null;
+if(!name || !price || !year || imgs.length===0){
+alert("Completa todo");
+return;
+}
+
+if(editKey){
+
+await update(ref(db,"cars/"+editKey),{
+name,
+price,
+year,
+imgs
+});
+
+editKey = null;
 
 }else{
 
-cars.push({name,price,year,imgs});
+await push(carsRef,{
+name,
+price,
+year,
+imgs
+});
 
 }
 
-save();
-render();
 clearForm();
 
 alert("Guardado");
+
 }
 
-function editCar(i){
+window.editCar = function(i){
 
 let car = cars[i];
-editIndex = i;
+
+editKey = currentKeys[i];
 
 document.getElementById("name").value = car.name;
+
 document.getElementById("price").value = car.price;
+
 document.getElementById("year").value = car.year;
+
 document.getElementById("imgs").value = car.imgs.join(",");
 
 document.getElementById("adminPanel").style.display="block";
+
 closeModal();
+
 }
 
-function deleteCar(i){
+window.deleteCar = async function(i){
 
-if(confirm("Borrar este carro?")){
-cars.splice(i,1);
-save();
-render();
+if(confirm("Borrar carro?")){
+
+await remove(ref(db,"cars/"+currentKeys[i]));
+
 closeModal();
+
 }
+
 }
 
 function clearForm(){
+
 document.getElementById("name").value="";
+
 document.getElementById("price").value="";
+
 document.getElementById("year").value="";
+
 document.getElementById("imgs").value="";
+
 }
 
-render();
+let clicks = 0;
+
+document.getElementById("secret").onclick = ()=>{
+
+clicks++;
+
+if(clicks>=5){
+
+let pass = prompt("Password");
+
+if(pass==="Khloe070304"){
+
+document.getElementById("adminPanel").style.display="block";
+
+}else{
+
+alert("Incorrecto");
+
+}
+
+clicks=0;
+
+}
+
+};
 
 </script>
 
 </body>
+</html>
 </html>
