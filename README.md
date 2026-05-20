@@ -1,10 +1,9 @@
 # thebestcars
-<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miami Auto Dealer</title>
+<title>The Best Cars Miami</title>
 
 <style>
 body{
@@ -88,7 +87,7 @@ border-radius:8px;
 <body>
 
 <div class="hero">
-<h1>🚗 Miami Auto Dealer</h1>
+<h1>🚗 The Best Cars Miami</h1>
 <p>Luxury | Salvage | Clean Title Inventory</p>
 <a class="btn" href="https://wa.me/13050000000">Contactar Ahora</a>
 </div>
@@ -101,10 +100,10 @@ border-radius:8px;
 <div class="card">
 <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
 <div class="info">
-<h3>BMW 3 Series 2020</h3>
-<p>Millas: 45,000</p>
-<p class="price">$18,500</p>
-<a class="whatsapp" href="https://wa.me/13050000000">WhatsApp</a>
+<h3>Ford Mustang Gt Premium 2020</h3>
+<p>Millas: 91,000</p>
+<p class="price">$23,500</p>
+<a class="whatsapp" href="https://wa.me/7542141799">WhatsApp</a>
 </div>
 </div>
 
