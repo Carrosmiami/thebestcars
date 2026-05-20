@@ -25,16 +25,15 @@ cursor:pointer;
 
 .controls{
 padding:15px;
-display:flex;
-gap:10px;
-justify-content:center;
-flex-wrap:wrap;
+text-align:center;
 }
 
-input, select{
+input{
 padding:10px;
 border-radius:8px;
 border:none;
+width:80%;
+max-width:300px;
 }
 
 .grid{
@@ -109,15 +108,13 @@ border-radius:8px;
 margin-top:10px;
 text-decoration:none;
 color:white;
+cursor:pointer;
 }
 
-.whatsapp{
-background:#25D366;
-}
-
-.reserve{
-background:#ff9800;
-}
+.whatsapp{background:#25D366;}
+.edit{background:#1e88e5;}
+.delete{background:#e53935;}
+.add{background:#ff9800;margin-top:10px;}
 
 /* ADMIN */
 #adminPanel{
@@ -139,16 +136,6 @@ padding:8px;
 border-radius:6px;
 border:none;
 }
-
-button{
-width:100%;
-padding:10px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-background:#1e88e5;
-color:white;
-}
 </style>
 </head>
 
@@ -159,7 +146,7 @@ color:white;
 </header>
 
 <div class="controls">
-<input type="text" id="search" placeholder="Buscar carro..." onkeyup="render()">
+<input id="search" placeholder="Buscar carro..." onkeyup="render()">
 </div>
 
 <div class="grid" id="grid"></div>
@@ -172,57 +159,58 @@ color:white;
 </div>
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- ADMIN -->
 <div id="adminPanel">
-<h3>🔒 Admin</h3>
+
+<h3>🔒 Admin Panel</h3>
+
 <input id="name" placeholder="Nombre">
 <input id="price" placeholder="Precio">
 <input id="year" placeholder="Año">
-<input id="imgs" placeholder="URLs imágenes separadas por ,">
-<button onclick="addCar()">Agregar Carro</button>
+<input id="imgs" placeholder="Fotos (URL1,URL2,URL3)">
+
+<button class="btn add" onclick="saveCar()">Guardar / Agregar</button>
+
 </div>
 
 <script>
 
-let clickCount = 0;
+let editIndex = null;
 
-document.getElementById("secret").onclick = function(){
+let clicks = 0;
 
-clickCount++;
-
-if(clickCount >= 5){
-
+document.getElementById("secret").onclick = () => {
+clicks++;
+if(clicks >= 5){
 let pass = prompt("Password:");
-
 if(pass === "Khloe070304"){
 document.getElementById("adminPanel").style.display="block";
 }else{
 alert("Incorrecto");
 }
-
-clickCount = 0;
+clicks = 0;
 }
-
 };
 
-let cars = JSON.parse(localStorage.getItem("cars"));
-
-if(!cars || cars.length === 0){
-cars = [
+let cars = JSON.parse(localStorage.getItem("cars")) || [
 {
 name:"Ford Mustang GT",
 price:23500,
 year:2020,
-imgs:["https://images.unsplash.com/photo-1503376780353-7e6692767b70"]
+imgs:[
+"https://images.unsplash.com/photo-1503376780353-7e6692767b70",
+"https://images.unsplash.com/photo-1525609004556-c46c7d6cf023"
+]
 },
 {
 name:"BMW 3 Series",
 price:18500,
 year:2020,
-imgs:["https://images.unsplash.com/photo-1493238792000-8113da705763"]
+imgs:[
+"https://images.unsplash.com/photo-1493238792000-8113da705763"
+]
 }
 ];
-}
 
 function save(){
 localStorage.setItem("cars", JSON.stringify(cars));
@@ -233,7 +221,7 @@ function render(){
 let grid = document.getElementById("grid");
 let search = document.getElementById("search").value.toLowerCase();
 
-grid.innerHTML = "";
+grid.innerHTML="";
 
 cars.filter(c=>c.name.toLowerCase().includes(search))
 .forEach((car,i)=>{
@@ -262,10 +250,13 @@ let imgs = car.imgs.map(img=>`<img src="${img}">`).join("");
 document.getElementById("modalBody").innerHTML = `
 <h2>${car.name}</h2>
 <p class="price">$${car.price}</p>
+
 <div class="slider">${imgs}</div>
 
 <a class="btn whatsapp" href="https://wa.me/13050000000">WhatsApp</a>
-<a class="btn reserve" href="#">Reservar</a>
+
+<button class="btn edit" onclick="editCar(${i})">✏ Editar</button>
+<button class="btn delete" onclick="deleteCar(${i})">🗑 Borrar</button>
 `;
 
 document.getElementById("modal").style.display="block";
@@ -276,29 +267,60 @@ function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
-function addCar(){
+function saveCar(){
 
 let name = document.getElementById("name").value;
 let price = document.getElementById("price").value;
 let year = document.getElementById("year").value;
-let imgs = document.getElementById("imgs").value.split(",");
+let imgs = document.getElementById("imgs").value.split(",").map(x=>x.trim());
 
-if(!name || !price || !year || !imgs){
-alert("Completa todo");
-return;
-}
+if(editIndex !== null){
+
+cars[editIndex] = {name,price,year,imgs};
+editIndex = null;
+
+}else{
 
 cars.push({name,price,year,imgs});
+
+}
+
 save();
 render();
+clearForm();
 
-alert("Carro agregado");
+alert("Guardado");
+}
 
+function editCar(i){
+
+let car = cars[i];
+editIndex = i;
+
+document.getElementById("name").value = car.name;
+document.getElementById("price").value = car.price;
+document.getElementById("year").value = car.year;
+document.getElementById("imgs").value = car.imgs.join(",");
+
+document.getElementById("adminPanel").style.display="block";
+closeModal();
+}
+
+function deleteCar(i){
+
+if(confirm("Borrar este carro?")){
+cars.splice(i,1);
+save();
+render();
+closeModal();
+}
+}
+
+function clearForm(){
 document.getElementById("name").value="";
 document.getElementById("price").value="";
 document.getElementById("year").value="";
 document.getElementById("imgs").value="";
-
 }
 
 render();
