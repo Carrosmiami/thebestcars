@@ -868,31 +868,165 @@ Highly recommended dealership.
 
 </section>
 
-<!-- FINANCING -->
+  
+  
+<section
+<!-- APPOINTMENT -->
 
 <section
-id="financing"
+id="appointment"
 class="testimonials"
 >
 
 <h2>
-💰 Financing Available
+📅 Schedule Appointment
 </h2>
 
 <p style="margin-bottom:25px;opacity:0.8;">
 
-Easy approval financing available.
+Book your visit directly online.
 
 </p>
 
-<a
+<button
 class="heroBtn"
-href="tel:+17542141799"
+onclick="openAppointment()"
 >
 
-Apply Now
+Book Appointment
+
+</button>
+
+</section>
+
+<!-- APPOINTMENT MODAL -->
+
+<div
+id="appointmentModal"
+class="modal"
+>
+
+<div class="modal-content">
+
+<span
+class="close"
+onclick="closeAppointment()"
+>
+
+✖
+
+</span>
+
+<h2 style="
+margin-bottom:25px;
+font-size:35px;
+">
+
+📅 Schedule Appointment
+
+</h2>
+
+<input
+id="clientName"
+placeholder="Your Name"
+style="
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:none;
+border-radius:12px;
+background:#0b1220;
+color:white;
+"
+>
+
+<input
+id="clientPhone"
+placeholder="Phone Number"
+style="
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:none;
+border-radius:12px;
+background:#0b1220;
+color:white;
+"
+>
+
+<input
+id="clientDate"
+type="date"
+style="
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:none;
+border-radius:12px;
+background:#0b1220;
+color:white;
+"
+>
+
+<select
+id="clientHour"
+style="
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:none;
+border-radius:12px;
+background:#0b1220;
+color:white;
+"
+>
+
+<option value="">
+Select Time
+</option>
+
+<option>10:00 AM</option>
+<option>11:00 AM</option>
+<option>12:00 PM</option>
+<option>1:00 PM</option>
+<option>2:00 PM</option>
+<option>3:00 PM</option>
+<option>4:00 PM</option>
+<option>5:00 PM</option>
+
+</select>
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+<a
+class="btn call"
+href="tel:+17542141799"
+style="flex:1;"
+>
+
+📞 Call Now
 
 </a>
+
+<button
+class="btn whatsapp"
+onclick="sendAppointment()"
+style="flex:1;"
+>
+
+✅ Confirm
+
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1381,6 +1515,66 @@ document.getElementById("search")
 
 }
 
+ /* APPOINTMENT */
+
+window.openAppointment = function(){
+
+document.getElementById("appointmentModal")
+.style.display = "block";
+
+}
+
+window.closeAppointment = function(){
+
+document.getElementById("appointmentModal")
+.style.display = "none";
+
+}
+
+window.sendAppointment = function(){
+
+let name =
+document.getElementById("clientName").value;
+
+let phone =
+document.getElementById("clientPhone").value;
+
+let date =
+document.getElementById("clientDate").value;
+
+let hour =
+document.getElementById("clientHour").value;
+
+if(!name || !phone || !date || !hour){
+
+alert("Complete everything");
+
+return;
+
+}
+
+let message =
+
+`📅 NEW APPOINTMENT
+
+👤 Name: ${name}
+
+📞 Phone: ${phone}
+
+📆 Date: ${date}
+
+⏰ Hour: ${hour}`;
+
+window.open(
+`https://wa.me/17542141799?text=${encodeURIComponent(message)}`
+);
+
+window.location.href =
+`mailto:thebestcarsmiami@gmail.com?subject=New Appointment&body=${encodeURIComponent(message)}`;
+
+closeAppointment();
+
+} 
 /* APP */
 
 if ("serviceWorker" in navigator) {
