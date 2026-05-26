@@ -1027,6 +1027,14 @@ document.getElementById("search")
 
 }
 
+if ("serviceWorker" in navigator) {
+
+navigator.serviceWorker
+.register("./sw.js")
+
+.then(() => console.log("APP READY"));
+
+}
 </script>
 
 </body>
