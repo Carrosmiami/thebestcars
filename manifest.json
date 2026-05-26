@@ -1,0 +1,21 @@
+{
+  "name": "The Best Cars Miami",
+  "short_name": "Best Cars",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#00e5ff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "ChatGPT Image 20 may 2026, 17_26_46.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "ChatGPT Image 20 may 2026, 17_26_46.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
