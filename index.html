@@ -1673,6 +1673,39 @@ window.location.href =
 closeAppointment();
 
 } 
+  /* REVIEW */
+
+window.openReview = function(){
+
+let name = prompt("Your Name");
+
+if(!name) return;
+
+let review = prompt("Write your review");
+
+if(!review) return;
+
+let stars = prompt("Stars 1-5");
+
+if(!stars) stars = "5";
+
+document.querySelector(".testGrid").innerHTML += `
+
+<div class="testCard">
+
+<h3>${"⭐".repeat(stars)}</h3>
+
+<p>${review}</p>
+
+<br>
+
+<small>- ${name}</small>
+
+</div>
+
+`;
+
+}
 /* APP */
 
 if ("serviceWorker" in navigator) {
