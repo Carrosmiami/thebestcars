@@ -1,158 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The Best Cars Miami</title>
 
+<meta name="description" content="Luxury and Clean Title Cars in Miami">
+<meta name="keywords" content="cars miami, luxury cars, used cars, salvage cars">
+
 <link rel="icon" type="image/png" href="ChatGPT Image 20 may 2026, 17_26_46.png">
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial;
-background:#050b16;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#050816;
 color:white;
 overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+background:
+linear-gradient(rgba(0,0,0,0.82),rgba(0,0,0,0.92)),
+url("ChatGPT Image 20 may 2026, 17_26_46.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+filter:blur(0px);
 }
 
 /* HEADER */
 
 header{
-position:relative;
-padding:35px 20px;
-text-align:center;
-background:linear-gradient(90deg,#000814,#001d3d);
-overflow:hidden;
+padding:30px 20px;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+position:sticky;
+top:0;
+z-index:500;
 }
 
-header::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url("ChatGPT Image 20 may 2026, 17_26_46.png") center center no-repeat;
-background-size:350px;
-opacity:0.08;
+.headerWrap{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
 }
 
 .logo{
 width:90px;
 height:90px;
 object-fit:cover;
-border-radius:15px;
-margin-right:15px;
-box-shadow:0 0 25px rgba(0,255,255,0.6);
-}
-
-.titleWrap{
-position:relative;
-z-index:2;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
+border-radius:18px;
+box-shadow:
+0 0 15px rgba(0,255,255,0.8),
+0 0 35px rgba(0,255,255,0.3);
 }
 
 header h1{
-font-size:60px;
+font-size:58px;
 font-weight:900;
-margin:0;
-text-transform:uppercase;
 letter-spacing:2px;
+text-transform:uppercase;
 font-family:Arial Black,sans-serif;
+cursor:pointer;
 
 background:linear-gradient(90deg,#00e5ff,#ffffff,#00ffcc);
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
 text-shadow:
-0 0 10px rgba(0,255,255,0.9),
-0 0 20px rgba(0,255,255,0.7),
-0 0 40px rgba(0,255,255,0.5);
+0 0 10px rgba(0,255,255,0.8),
+0 0 25px rgba(0,255,255,0.6),
+0 0 50px rgba(0,255,255,0.4);
 }
 
-/* CONTROLS */
+/* TOP BAR */
 
-.controls{
+.topbar{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
 padding:20px;
-text-align:center;
-background:#08111f;
+}
+
+.topbar button,
+.topbar select,
+.topbar input{
+
+padding:13px;
+border:none;
+border-radius:12px;
+background:rgba(17,24,39,0.95);
+color:white;
+font-size:15px;
+outline:none;
+backdrop-filter:blur(10px);
 }
 
 .langBtn{
-background:#00e5ff;
-border:none;
-padding:12px 18px;
-border-radius:10px;
-cursor:pointer;
+background:#00e5ff !important;
+color:black !important;
 font-weight:bold;
-margin-bottom:15px;
-box-shadow:0 0 15px rgba(0,229,255,0.5);
+cursor:pointer;
 }
 
-input{
-width:90%;
-max-width:350px;
-padding:14px;
+/* MAP */
+
+.map{
+padding:0 20px 20px;
+}
+
+.map iframe{
+width:100%;
+height:250px;
 border:none;
-border-radius:12px;
-background:#111827;
-color:white;
-font-size:16px;
-outline:none;
-box-shadow:0 0 12px rgba(0,255,255,0.2);
+border-radius:20px;
 }
 
 /* GRID */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-padding:25px;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+padding:20px;
 }
 
+/* CARD */
+
 .card{
-background:#101826;
-border-radius:15px;
+position:relative;
+background:rgba(17,24,39,0.75);
+backdrop-filter:blur(14px);
+border-radius:22px;
 overflow:hidden;
 cursor:pointer;
-transition:0.3s;
-box-shadow:0 0 15px rgba(0,0,0,0.4);
+transition:0.35s;
+border:1px solid rgba(255,255,255,0.06);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.4);
 }
 
 .card:hover{
-transform:translateY(-5px);
-box-shadow:0 0 25px rgba(0,255,255,0.4);
+transform:translateY(-10px) scale(1.02);
+
+box-shadow:
+0 0 30px rgba(0,255,255,0.28);
 }
 
 .card img{
 width:100%;
-height:200px;
+height:220px;
 object-fit:cover;
 }
 
 .info{
-padding:15px;
+padding:18px;
 }
 
 .info h3{
-margin:0;
-font-size:22px;
+font-size:24px;
+margin-bottom:10px;
 }
 
 .price{
-color:#00ff99;
+font-size:25px;
 font-weight:bold;
-font-size:20px;
-margin-top:10px;
+color:#00ff99;
+margin-top:12px;
+}
+
+/* BADGES */
+
+.badge{
+position:absolute;
+top:15px;
+left:15px;
+padding:8px 12px;
+border-radius:10px;
+font-size:13px;
+font-weight:bold;
+z-index:2;
+}
+
+.clean{
+background:#00c853;
+}
+
+.hot{
+background:#ff3d00;
+}
+
+.sold{
+background:red;
+right:15px;
+left:auto;
 }
 
 /* MODAL */
@@ -167,41 +232,59 @@ height:100%;
 background:rgba(0,0,0,0.95);
 z-index:999;
 overflow:auto;
+padding:20px;
 }
 
 .modal-content{
 background:#111827;
-margin:40px auto;
-padding:20px;
-width:90%;
-max-width:750px;
-border-radius:20px;
+max-width:950px;
+margin:auto;
+padding:25px;
+border-radius:25px;
+position:relative;
 }
 
 .close{
-float:right;
-font-size:30px;
+position:absolute;
+top:15px;
+right:20px;
+font-size:32px;
 cursor:pointer;
 color:red;
 }
 
 .slider img{
 width:100%;
-border-radius:15px;
+border-radius:18px;
 margin-bottom:15px;
+cursor:pointer;
+transition:0.3s;
 }
+
+.slider img:hover{
+transform:scale(1.01);
+}
+
+/* BUTTONS */
 
 .btn{
 display:block;
-padding:14px;
-margin-top:10px;
-border-radius:10px;
+width:100%;
+padding:15px;
+margin-top:12px;
+border:none;
+border-radius:14px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 text-align:center;
 text-decoration:none;
 color:white;
-font-weight:bold;
-border:none;
-cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.02);
 }
 
 .whatsapp{
@@ -224,48 +307,126 @@ background:#e53935;
 background:#ff9800;
 }
 
-/* ADMIN PANEL */
+/* ADMIN */
 
 #adminPanel{
 display:none;
 position:fixed;
 right:20px;
 bottom:20px;
-width:300px;
-background:#111827;
-padding:20px;
-border-radius:15px;
+width:330px;
+background:rgba(17,24,39,0.97);
+padding:22px;
+border-radius:22px;
 z-index:1000;
-box-shadow:0 0 20px rgba(0,0,0,0.6);
+
+backdrop-filter:blur(12px);
+
+box-shadow:
+0 0 35px rgba(0,0,0,0.6);
 }
 
 #adminPanel h3{
-margin-top:0;
+margin-bottom:15px;
 text-align:center;
 }
 
-#adminPanel input{
+#adminPanel input,
+#adminPanel select{
 width:100%;
+padding:12px;
 margin-bottom:10px;
+border:none;
+border-radius:10px;
+background:#0b1220;
+color:white;
 }
 
-.fileText{
-font-size:13px;
-opacity:0.7;
-margin-top:-5px;
-margin-bottom:10px;
+/* FLOATING WHATSAPP */
+
+.floatWA{
+position:fixed;
+bottom:25px;
+left:25px;
+background:#25D366;
+width:65px;
+height:65px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+text-decoration:none;
+z-index:999;
+box-shadow:0 0 25px rgba(37,211,102,0.6);
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+padding:50px 20px;
+text-align:center;
+}
+
+.testimonials h2{
+margin-bottom:30px;
+font-size:38px;
+}
+
+.testGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.testCard{
+background:rgba(17,24,39,0.8);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+/* FOOTER */
+
+footer{
+padding:35px;
+text-align:center;
+background:#030712;
+margin-top:40px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+header h1{
+font-size:34px;
+text-align:center;
+}
+
+.logo{
+width:70px;
+height:70px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
+<div class="bg"></div>
+
 <header>
 
-<div class="titleWrap">
+<div class="headerWrap">
 
-<img src="ChatGPT Image 20 may 2026, 17_26_46.png" class="logo">
+<img
+src="ChatGPT Image 20 may 2026, 17_26_46.png"
+class="logo"
+>
 
 <h1 id="secret">
 THE BEST CARS MIAMI
@@ -275,15 +436,33 @@ THE BEST CARS MIAMI
 
 </header>
 
-<div class="controls">
+<div class="topbar">
 
 <button class="langBtn" onclick="toggleLang()">
 🌎 English / Español
 </button>
 
-<br>
+<input
+id="search"
+placeholder="Buscar carro..."
+onkeyup="render()"
+>
 
-<input id="search" placeholder="Buscar carro..." onkeyup="render()">
+<select id="filter" onchange="render()">
+
+<option value="">Todos</option>
+<option value="clean">Clean Title</option>
+<option value="sold">Sold</option>
+
+</select>
+
+</div>
+
+<div class="map">
+
+<iframe
+src="https://maps.google.com/maps?q=Miami&t=&z=11&ie=UTF8&iwloc=&output=embed">
+</iframe>
 
 </div>
 
@@ -303,7 +482,7 @@ THE BEST CARS MIAMI
 
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- ADMIN -->
 
 <div id="adminPanel">
 
@@ -315,13 +494,21 @@ THE BEST CARS MIAMI
 
 <input id="year" placeholder="Año">
 
-<input type="file" id="fileInput" multiple accept="image/*">
+<select id="badge">
 
-<div class="fileText">
-Selecciona fotos desde tu galería
-</div>
+<option value="clean">Clean Title</option>
+<option value="hot">Hot Deal</option>
 
-<input id="imgs" placeholder="O pega URLs separadas por coma">
+</select>
+
+<select id="sold">
+
+<option value="false">Disponible</option>
+<option value="true">Sold</option>
+
+</select>
+
+<input id="imgs" placeholder="URL1,URL2,URL3">
 
 <button class="btn add" onclick="saveCar()">
 Guardar Carro
@@ -329,22 +516,89 @@ Guardar Carro
 
 </div>
 
-<!-- FIREBASE -->
+<!-- FLOATING WHATSAPP -->
+
+<a
+class="floatWA"
+href="https://wa.me/17542141799"
+target="_blank">
+
+💬
+
+</a>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+
+<h2>⭐ Clientes Felices</h2>
+
+<div class="testGrid">
+
+<div class="testCard">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+Best dealer in Miami. Amazing service.
+</p>
+
+</div>
+
+<div class="testCard">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+Very professional and fast process.
+</p>
+
+</div>
+
+<div class="testCard">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+Highly recommended dealership.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h3>The Best Cars Miami</h3>
+
+<p>📞 754-214-1799</p>
+
+<p>📍 Miami, Florida</p>
+
+</footer>
 
 <script type="module">
 
 import { initializeApp }
+
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
+
 getDatabase,
 ref,
 push,
 onValue,
 remove,
 update
+
 }
+
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+/* FIREBASE */
 
 const firebaseConfig = {
 
@@ -360,9 +614,7 @@ storageBucket: "thebestcars-miami.firebasestorage.app",
 
 messagingSenderId: "323195561825",
 
-appId: "1:323195561825:web:f48bc075e99ba152c40720",
-
-measurementId: "G-G4MN1SBMT6"
+appId: "1:323195561825:web:f48bc075e99ba152c40720"
 
 };
 
@@ -375,6 +627,7 @@ const carsRef = ref(db,"cars");
 let cars = [];
 let currentKeys = [];
 let editKey = null;
+let isAdmin = false;
 
 /* LOAD */
 
@@ -398,22 +651,55 @@ render();
 
 window.render = function(){
 
-let search = document
-.getElementById("search")
+let search =
+document.getElementById("search")
 .value
 .toLowerCase();
+
+let filter =
+document.getElementById("filter")
+.value;
 
 let grid = document.getElementById("grid");
 
 grid.innerHTML = "";
 
 cars
-.filter(car=>car.name.toLowerCase().includes(search))
+
+.filter(car=>{
+
+let matchesSearch =
+car.name.toLowerCase().includes(search);
+
+let matchesFilter = true;
+
+if(filter==="clean"){
+matchesFilter = car.badge==="clean";
+}
+
+if(filter==="sold"){
+matchesFilter = car.sold===true;
+}
+
+return matchesSearch && matchesFilter;
+
+})
+
 .forEach((car,i)=>{
 
 grid.innerHTML += `
 
 <div class="card" onclick="openCar(${i})">
+
+<div class="badge ${car.badge}">
+${car.badge==="clean" ? "✅ CLEAN TITLE" : "🔥 HOT DEAL"}
+</div>
+
+${car.sold ? `
+<div class="badge sold">
+SOLD
+</div>
+` : ""}
 
 <img src="${car.imgs[0]}">
 
@@ -442,22 +728,27 @@ window.openCar = function(i){
 let car = cars[i];
 
 let imgs = car.imgs
-.map(img=>`<img src="${img}">`)
+.map(img=>`<img src="${img}" onclick="window.open('${img}')">`)
 .join("");
 
 document.getElementById("modalBody").innerHTML = `
 
 <h2>${car.name}</h2>
 
+<br>
+
 <p class="price">$${car.price}</p>
 
-<p>Año: ${car.year}</p>
+<br>
 
 <div class="slider">
+
 ${imgs}
+
 </div>
 
-<a class="btn whatsapp"
+<a
+class="btn whatsapp"
 href="https://wa.me/17542141799"
 target="_blank">
 
@@ -465,12 +756,29 @@ target="_blank">
 
 </a>
 
-<a class="btn call"
+<a
+class="btn call"
 href="tel:+17542141799">
 
 📞 Llamar Ahora
 
 </a>
+
+${isAdmin ? `
+
+<button class="btn edit" onclick="editCar(${i})">
+
+✏ Editar
+
+</button>
+
+<button class="btn delete" onclick="deleteCar(${i})">
+
+🗑 Borrar
+
+</button>
+
+` : ""}
 
 `;
 
@@ -490,49 +798,31 @@ document.getElementById("modal").style.display="none";
 
 window.saveCar = async function(){
 
-let name = document.getElementById("name").value;
+let name =
+document.getElementById("name").value;
 
-let price = document.getElementById("price").value;
+let price =
+document.getElementById("price").value;
 
-let year = document.getElementById("year").value;
+let year =
+document.getElementById("year").value;
 
-let imgsInput = document.getElementById("imgs").value;
+let badge =
+document.getElementById("badge").value;
 
-let imgs = [];
+let sold =
+document.getElementById("sold").value === "true";
 
-if(imgsInput.trim() !== ""){
-
-imgs = imgsInput
+let imgs =
+document.getElementById("imgs")
+.value
 .split(",")
 .map(x=>x.trim());
-
-}
-
-const files = document.getElementById("fileInput").files;
-
-for(let file of files){
-
-let reader = new FileReader();
-
-await new Promise(resolve=>{
-
-reader.onload = function(e){
-
-imgs.push(e.target.result);
-
-resolve();
-
-};
-
-reader.readAsDataURL(file);
-
-});
-
-}
 
 if(!name || !price || !year || imgs.length===0){
 
 alert("Completa todo");
+
 return;
 
 }
@@ -544,6 +834,8 @@ await update(ref(db,"cars/"+editKey),{
 name,
 price,
 year,
+badge,
+sold,
 imgs
 
 });
@@ -557,6 +849,8 @@ await push(carsRef,{
 name,
 price,
 year,
+badge,
+sold,
 imgs
 
 });
@@ -566,6 +860,32 @@ imgs
 clearForm();
 
 alert("Guardado");
+
+}
+
+/* EDIT */
+
+window.editCar = function(i){
+
+let car = cars[i];
+
+editKey = currentKeys[i];
+
+document.getElementById("name").value = car.name;
+
+document.getElementById("price").value = car.price;
+
+document.getElementById("year").value = car.year;
+
+document.getElementById("badge").value = car.badge;
+
+document.getElementById("sold").value = car.sold;
+
+document.getElementById("imgs").value = car.imgs.join(",");
+
+document.getElementById("adminPanel").style.display="block";
+
+closeModal();
 
 }
 
@@ -591,11 +911,10 @@ document.getElementById("name").value="";
 document.getElementById("price").value="";
 document.getElementById("year").value="";
 document.getElementById("imgs").value="";
-document.getElementById("fileInput").value="";
 
 }
 
-/* SECRET ADMIN */
+/* ADMIN LOGIN */
 
 let clicks = 0;
 
@@ -603,13 +922,17 @@ document.getElementById("secret").onclick = ()=>{
 
 clicks++;
 
-if(clicks >= 5){
+if(clicks>=5){
 
 let pass = prompt("Password");
 
-if(pass === "Khloe070304"){
+if(pass==="Khloe070304"){
+
+isAdmin = true;
 
 document.getElementById("adminPanel").style.display="block";
+
+render();
 
 }else{
 
@@ -617,7 +940,7 @@ alert("Incorrecto");
 
 }
 
-clicks = 0;
+clicks=0;
 
 }
 
