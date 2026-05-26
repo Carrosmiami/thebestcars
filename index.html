@@ -8,7 +8,7 @@
 <title>The Best Cars Miami</title>
 
 <meta name="description" content="Luxury and Clean Title Cars in Miami">
-<meta name="keywords" content="cars miami, luxury cars, used cars, salvage cars">
+<meta name="keywords" content="cars miami, luxury cars, rebuilt cars, used cars">
 
 <link rel="icon" type="image/png" href="ChatGPT Image 20 may 2026, 17_26_46.png">
 
@@ -28,8 +28,6 @@ color:white;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 .bg{
 position:fixed;
 top:0;
@@ -43,7 +41,6 @@ url("ChatGPT Image 20 may 2026, 17_26_46.png");
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
-filter:blur(0px);
 }
 
 /* HEADER */
@@ -95,7 +92,7 @@ text-shadow:
 0 0 50px rgba(0,255,255,0.4);
 }
 
-/* TOP BAR */
+/* TOPBAR */
 
 .topbar{
 display:flex;
@@ -108,7 +105,6 @@ padding:20px;
 .topbar button,
 .topbar select,
 .topbar input{
-
 padding:13px;
 border:none;
 border-radius:12px;
@@ -126,17 +122,29 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* MAP */
+/* LOCATION */
 
-.map{
-padding:0 20px 20px;
+.locationSection{
+padding:50px 20px;
+text-align:center;
+}
+
+.locationSection h2{
+font-size:40px;
+margin-bottom:20px;
 }
 
 .map iframe{
 width:100%;
-height:250px;
+height:260px;
 border:none;
 border-radius:20px;
+}
+
+.address{
+margin-top:15px;
+font-size:18px;
+opacity:0.85;
 }
 
 /* GRID */
@@ -159,16 +167,12 @@ overflow:hidden;
 cursor:pointer;
 transition:0.35s;
 border:1px solid rgba(255,255,255,0.06);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.4);
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
 .card:hover{
 transform:translateY(-10px) scale(1.02);
-
-box-shadow:
-0 0 30px rgba(0,255,255,0.28);
+box-shadow:0 0 30px rgba(0,255,255,0.28);
 }
 
 .card img{
@@ -212,6 +216,10 @@ background:#00c853;
 
 .hot{
 background:#ff3d00;
+}
+
+.rebuilt{
+background:#ff9800;
 }
 
 .sold{
@@ -319,11 +327,8 @@ background:rgba(17,24,39,0.97);
 padding:22px;
 border-radius:22px;
 z-index:1000;
-
 backdrop-filter:blur(12px);
-
-box-shadow:
-0 0 35px rgba(0,0,0,0.6);
+box-shadow:0 0 35px rgba(0,0,0,0.6);
 }
 
 #adminPanel h3{
@@ -332,7 +337,8 @@ text-align:center;
 }
 
 #adminPanel input,
-#adminPanel select{
+#adminPanel select,
+#adminPanel textarea{
 width:100%;
 padding:12px;
 margin-bottom:10px;
@@ -452,19 +458,34 @@ onkeyup="render()"
 
 <option value="">Todos</option>
 <option value="clean">Clean Title</option>
+<option value="rebuilt">Rebuilt</option>
 <option value="sold">Sold</option>
 
 </select>
 
 </div>
 
+<!-- LOCATION -->
+
+<section class="locationSection">
+
+<h2>📍 Nuestra Ubicación</h2>
+
 <div class="map">
 
 <iframe
-src="https://maps.google.com/maps?q=Miami&t=&z=11&ie=UTF8&iwloc=&output=embed">
+src="https://maps.google.com/maps?q=970%20E%204th%20St%20Hialeah%20FL%2033010&t=&z=15&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
 </div>
+
+<div class="address">
+
+📍 970 E 4th St Hialeah FL 33010
+
+</div>
+
+</section>
 
 <div class="grid" id="grid"></div>
 
@@ -494,16 +515,26 @@ src="https://maps.google.com/maps?q=Miami&t=&z=11&ie=UTF8&iwloc=&output=embed">
 
 <input id="year" placeholder="Año">
 
+<textarea
+id="description"
+placeholder="Descripción del carro"
+style="height:120px;resize:none;">
+</textarea>
+
 <select id="badge">
 
 <option value="clean">Clean Title</option>
+
 <option value="hot">Hot Deal</option>
+
+<option value="rebuilt">Rebuilt</option>
 
 </select>
 
 <select id="sold">
 
 <option value="false">Disponible</option>
+
 <option value="true">Sold</option>
 
 </select>
@@ -575,7 +606,7 @@ Highly recommended dealership.
 
 <p>📞 754-214-1799</p>
 
-<p>📍 Miami, Florida</p>
+<p>📍 Hialeah, Florida</p>
 
 </footer>
 
@@ -677,6 +708,10 @@ if(filter==="clean"){
 matchesFilter = car.badge==="clean";
 }
 
+if(filter==="rebuilt"){
+matchesFilter = car.badge==="rebuilt";
+}
+
 if(filter==="sold"){
 matchesFilter = car.sold===true;
 }
@@ -692,7 +727,17 @@ grid.innerHTML += `
 <div class="card" onclick="openCar(${i})">
 
 <div class="badge ${car.badge}">
-${car.badge==="clean" ? "✅ CLEAN TITLE" : "🔥 HOT DEAL"}
+
+${
+car.badge==="clean"
+? "✅ CLEAN TITLE"
+
+: car.badge==="rebuilt"
+? "🛠 REBUILT"
+
+: "🔥 HOT DEAL"
+}
+
 </div>
 
 ${car.sold ? `
@@ -738,6 +783,10 @@ document.getElementById("modalBody").innerHTML = `
 <br>
 
 <p class="price">$${car.price}</p>
+
+<p style="margin-top:15px;line-height:1.6;opacity:0.9;">
+${car.description || ""}
+</p>
 
 <br>
 
@@ -807,6 +856,9 @@ document.getElementById("price").value;
 let year =
 document.getElementById("year").value;
 
+let description =
+document.getElementById("description").value;
+
 let badge =
 document.getElementById("badge").value;
 
@@ -834,6 +886,7 @@ await update(ref(db,"cars/"+editKey),{
 name,
 price,
 year,
+description,
 badge,
 sold,
 imgs
@@ -849,6 +902,7 @@ await push(carsRef,{
 name,
 price,
 year,
+description,
 badge,
 sold,
 imgs
@@ -876,6 +930,9 @@ document.getElementById("name").value = car.name;
 document.getElementById("price").value = car.price;
 
 document.getElementById("year").value = car.year;
+
+document.getElementById("description").value =
+car.description || "";
 
 document.getElementById("badge").value = car.badge;
 
@@ -910,6 +967,7 @@ function clearForm(){
 document.getElementById("name").value="";
 document.getElementById("price").value="";
 document.getElementById("year").value="";
+document.getElementById("description").value="";
 document.getElementById("imgs").value="";
 
 }
