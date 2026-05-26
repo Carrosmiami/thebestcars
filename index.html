@@ -1214,6 +1214,9 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const carsRef = ref(db,"cars");
+  const reviewsRef = ref(db,"reviews");
+
+let reviews = [];
 
 let cars = [];
 let currentKeys = [];
@@ -1235,7 +1238,20 @@ currentKeys.push(child.key);
 });
 
 render();
+onValue(reviewsRef,(snapshot)=>{
 
+reviews = [];
+
+snapshot.forEach(child=>{
+
+reviews.push(child.val());
+
+});
+
+renderReviews();
+
+});
+  
 });
 
 /* RENDER */
@@ -1704,6 +1720,59 @@ document.querySelector(".testGrid").innerHTML += `
 </div>
 
 `;
+
+}
+  /* REVIEWS */
+
+window.openReview = function(){
+
+let name = prompt("Your Name");
+
+if(!name) return;
+
+let review = prompt("Write your review");
+
+if(!review) return;
+
+let stars = prompt("Stars 1-5");
+
+if(!stars) stars = "5";
+
+push(reviewsRef,{
+
+name,
+review,
+stars
+
+});
+
+}
+
+function renderReviews(){
+
+let html = "";
+
+reviews.forEach(r=>{
+
+html += `
+
+<div class="testCard">
+
+<h3>${"⭐".repeat(r.stars)}</h3>
+
+<p>${r.review}</p>
+
+<br>
+
+<small>- ${r.name}</small>
+
+</div>
+
+`;
+
+});
+
+document.querySelector(".testGrid").innerHTML = html;
 
 }
 /* APP */
