@@ -6,11 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The Best Cars Miami</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#00e5ff">
-  
+
 <meta name="description" content="Luxury and Clean Title Cars in Miami">
-<meta name="keywords" content="cars miami, luxury cars, rebuilt cars, used cars">
+<meta name="keywords" content="cars miami, luxury cars, rebuilt cars">
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#00e5ff">
 
 <link rel="icon" type="image/png" href="ChatGPT Image 20 may 2026, 17_26_46.png">
 
@@ -30,6 +32,8 @@ color:white;
 overflow-x:hidden;
 }
 
+/* BACKGROUND */
+
 .bg{
 position:fixed;
 top:0;
@@ -37,9 +41,11 @@ left:0;
 width:100%;
 height:100%;
 z-index:-2;
+
 background:
 linear-gradient(rgba(0,0,0,0.82),rgba(0,0,0,0.92)),
 url("ChatGPT Image 20 may 2026, 17_26_46.png");
+
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
@@ -48,50 +54,165 @@ background-attachment:fixed;
 /* HEADER */
 
 header{
-padding:30px 20px;
-background:rgba(0,0,0,0.45);
-backdrop-filter:blur(12px);
+padding:25px 20px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(14px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 position:sticky;
 top:0;
-z-index:500;
+z-index:999;
 }
 
 .headerWrap{
 display:flex;
+justify-content:space-between;
 align-items:center;
-justify-content:center;
 gap:20px;
 flex-wrap:wrap;
 }
 
+.leftHeader{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
 .logo{
-width:90px;
-height:90px;
+width:80px;
+height:80px;
+border-radius:20px;
 object-fit:cover;
-border-radius:18px;
+
 box-shadow:
 0 0 15px rgba(0,255,255,0.8),
-0 0 35px rgba(0,255,255,0.3);
+0 0 40px rgba(0,255,255,0.25);
 }
 
 header h1{
-font-size:58px;
+font-size:48px;
 font-weight:900;
-letter-spacing:2px;
-text-transform:uppercase;
 font-family:Arial Black,sans-serif;
+letter-spacing:2px;
 cursor:pointer;
 
-background:linear-gradient(90deg,#00e5ff,#ffffff,#00ffcc);
+background:
+linear-gradient(
+90deg,
+#00e5ff,
+#ffffff,
+#00ffcc
+);
 
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
 text-shadow:
-0 0 10px rgba(0,255,255,0.8),
-0 0 25px rgba(0,255,255,0.6),
-0 0 50px rgba(0,255,255,0.4);
+0 0 15px rgba(0,255,255,0.7),
+0 0 40px rgba(0,255,255,0.3);
+}
+
+.navbar{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.navbar a{
+text-decoration:none;
+color:white;
+font-weight:bold;
+opacity:0.85;
+transition:0.3s;
+}
+
+.navbar a:hover{
+opacity:1;
+color:#00e5ff;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+height:85vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+
+background:
+url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1920");
+
+background-size:cover;
+background-position:center;
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:
+linear-gradient(rgba(0,0,0,0.65),
+rgba(0,0,0,0.88));
+}
+
+.heroContent{
+position:relative;
+z-index:2;
+padding:20px;
+animation:fadeUp 1s ease;
+}
+
+.heroContent h2{
+font-size:74px;
+font-weight:900;
+line-height:1.1;
+
+background:
+linear-gradient(
+90deg,
+#00e5ff,
+#ffffff,
+#00ffcc
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 25px rgba(0,255,255,0.7);
+
+margin-bottom:20px;
+}
+
+.heroContent p{
+font-size:24px;
+opacity:0.9;
+margin-bottom:30px;
+}
+
+.heroBtn{
+display:inline-block;
+padding:18px 35px;
+border-radius:16px;
+background:#00e5ff;
+color:black;
+font-weight:bold;
+font-size:18px;
+text-decoration:none;
+transition:0.3s;
+box-shadow:
+0 0 25px rgba(0,229,255,0.4);
+}
+
+.heroBtn:hover{
+transform:scale(1.05);
+box-shadow:
+0 0 35px rgba(0,229,255,0.8);
 }
 
 /* TOPBAR */
@@ -101,16 +222,16 @@ display:flex;
 justify-content:center;
 gap:12px;
 flex-wrap:wrap;
-padding:20px;
+padding:25px;
 }
 
-.topbar button,
+.topbar input,
 .topbar select,
-.topbar input{
-padding:13px;
+.topbar button{
+padding:14px;
 border:none;
-border-radius:12px;
-background:rgba(17,24,39,0.95);
+border-radius:14px;
+background:rgba(17,24,39,0.92);
 color:white;
 font-size:15px;
 outline:none;
@@ -129,32 +250,55 @@ cursor:pointer;
 .miniMap{
 display:flex;
 justify-content:center;
-padding:10px 20px 25px;
+padding:0 20px 30px;
 }
 
 .miniMap a{
 display:flex;
 align-items:center;
 gap:10px;
+padding:12px 20px;
 background:rgba(17,24,39,0.85);
-padding:10px 18px;
 border-radius:15px;
 text-decoration:none;
 color:white;
 font-weight:bold;
 backdrop-filter:blur(10px);
 transition:0.3s;
-box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
 .miniMap a:hover{
 transform:scale(1.05);
-box-shadow:0 0 20px rgba(0,255,255,0.4);
+box-shadow:
+0 0 25px rgba(0,255,255,0.4);
 }
 
 .miniMap img{
-width:28px;
-height:28px;
+width:30px;
+height:30px;
+}
+
+/* STATS */
+
+.stats{
+padding:50px 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.statCard{
+background:rgba(17,24,39,0.75);
+padding:30px;
+border-radius:22px;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+.statCard h3{
+font-size:45px;
+color:#00e5ff;
+margin-bottom:10px;
 }
 
 /* GRID */
@@ -182,12 +326,13 @@ box-shadow:0 10px 30px rgba(0,0,0,0.4);
 
 .card:hover{
 transform:translateY(-10px) scale(1.02);
-box-shadow:0 0 30px rgba(0,255,255,0.28);
+box-shadow:
+0 0 30px rgba(0,255,255,0.25);
 }
 
 .card img{
 width:100%;
-height:220px;
+height:230px;
 object-fit:cover;
 }
 
@@ -201,7 +346,7 @@ margin-bottom:10px;
 }
 
 .price{
-font-size:25px;
+font-size:26px;
 font-weight:bold;
 color:#00ff99;
 margin-top:12px;
@@ -248,8 +393,8 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.95);
-z-index:999;
 overflow:auto;
+z-index:999;
 padding:20px;
 }
 
@@ -273,14 +418,8 @@ color:red;
 
 .slider img{
 width:100%;
-border-radius:18px;
 margin-bottom:15px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.slider img:hover{
-transform:scale(1.01);
+border-radius:18px;
 }
 
 /* BUTTONS */
@@ -347,8 +486,8 @@ text-align:center;
 }
 
 #adminPanel input,
-#adminPanel select,
-#adminPanel textarea{
+#adminPanel textarea,
+#adminPanel select{
 width:100%;
 padding:12px;
 margin-bottom:10px;
@@ -356,6 +495,31 @@ border:none;
 border-radius:10px;
 background:#0b1220;
 color:white;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+padding:60px 20px;
+text-align:center;
+}
+
+.testimonials h2{
+font-size:42px;
+margin-bottom:30px;
+}
+
+.testGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.testCard{
+background:rgba(17,24,39,0.8);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(10px);
 }
 
 /* FLOATING WHATSAPP */
@@ -369,46 +533,38 @@ width:65px;
 height:65px;
 border-radius:50%;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 font-size:32px;
 text-decoration:none;
 z-index:999;
-box-shadow:0 0 25px rgba(37,211,102,0.6);
-}
-
-/* TESTIMONIALS */
-
-.testimonials{
-padding:50px 20px;
-text-align:center;
-}
-
-.testimonials h2{
-margin-bottom:30px;
-font-size:38px;
-}
-
-.testGrid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.testCard{
-background:rgba(17,24,39,0.8);
-padding:20px;
-border-radius:20px;
-backdrop-filter:blur(10px);
+box-shadow:
+0 0 25px rgba(37,211,102,0.6);
 }
 
 /* FOOTER */
 
 footer{
-padding:35px;
+padding:40px;
 text-align:center;
 background:#030712;
 margin-top:40px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
 }
 
 /* MOBILE */
@@ -416,13 +572,24 @@ margin-top:40px;
 @media(max-width:700px){
 
 header h1{
-font-size:34px;
-text-align:center;
+font-size:32px;
 }
 
 .logo{
-width:70px;
-height:70px;
+width:65px;
+height:65px;
+}
+
+.hero{
+height:75vh;
+}
+
+.heroContent h2{
+font-size:42px;
+}
+
+.heroContent p{
+font-size:18px;
 }
 
 }
@@ -439,6 +606,8 @@ height:70px;
 
 <div class="headerWrap">
 
+<div class="leftHeader">
+
 <img
 src="ChatGPT Image 20 may 2026, 17_26_46.png"
 class="logo"
@@ -450,7 +619,49 @@ THE BEST CARS MIAMI
 
 </div>
 
+<div class="navbar">
+
+<a href="#">Home</a>
+
+<a href="#grid">Inventory</a>
+
+<a href="#financing">Financing</a>
+
+<a href="#contact">Contact</a>
+
+</div>
+
+</div>
+
 </header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="overlay"></div>
+
+<div class="heroContent">
+
+<h2>
+Miami’s Best Luxury Inventory
+</h2>
+
+<p>
+Clean Title • Rebuilt • Luxury • Financing
+</p>
+
+<a href="#grid" class="heroBtn">
+
+Explore Inventory
+
+</a>
+
+</div>
+
+</section>
+
+<!-- FILTERS -->
 
 <div class="topbar">
 
@@ -467,9 +678,18 @@ onkeyup="render()"
 <select id="filter" onchange="render()">
 
 <option value="">Todos</option>
-<option value="clean">Clean Title</option>
-<option value="rebuilt">Rebuilt</option>
-<option value="sold">Sold</option>
+
+<option value="clean">
+Clean Title
+</option>
+
+<option value="rebuilt">
+Rebuilt
+</option>
+
+<option value="sold">
+Sold
+</option>
 
 </select>
 
@@ -494,6 +714,38 @@ src="https://cdn-icons-png.flaticon.com/512/2991/2991231.png"
 
 </div>
 
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="statCard">
+
+<h3>500+</h3>
+
+<p>Cars Sold</p>
+
+</div>
+
+<div class="statCard">
+
+<h3>300+</h3>
+
+<p>Happy Clients</p>
+
+</div>
+
+<div class="statCard">
+
+<h3>5+</h3>
+
+<p>Years Experience</p>
+
+</div>
+
+</section>
+
+<!-- INVENTORY -->
+
 <div class="grid" id="grid"></div>
 
 <!-- MODAL -->
@@ -502,7 +754,9 @@ src="https://cdn-icons-png.flaticon.com/512/2991/2991231.png"
 
 <div class="modal-content">
 
-<span class="close" onclick="closeModal()">✖</span>
+<span class="close" onclick="closeModal()">
+✖
+</span>
 
 <div id="modalBody"></div>
 
@@ -530,46 +784,52 @@ style="height:120px;resize:none;">
 
 <select id="badge">
 
-<option value="clean">Clean Title</option>
+<option value="clean">
+Clean Title
+</option>
 
-<option value="hot">Hot Deal</option>
+<option value="hot">
+Hot Deal
+</option>
 
-<option value="rebuilt">Rebuilt</option>
+<option value="rebuilt">
+Rebuilt
+</option>
 
 </select>
 
 <select id="sold">
 
-<option value="false">Disponible</option>
+<option value="false">
+Disponible
+</option>
 
-<option value="true">Sold</option>
+<option value="true">
+Sold
+</option>
 
 </select>
 
-<input id="imgs" placeholder="URL1,URL2,URL3">
+<input
+id="imgs"
+placeholder="URL1,URL2,URL3"
+>
 
 <button class="btn add" onclick="saveCar()">
+
 Guardar Carro
+
 </button>
 
 </div>
-
-<!-- FLOATING WHATSAPP -->
-
-<a
-class="floatWA"
-href="https://wa.me/17542141799"
-target="_blank">
-
-💬
-
-</a>
 
 <!-- TESTIMONIALS -->
 
 <section class="testimonials">
 
-<h2>⭐ Clientes Felices</h2>
+<h2>
+⭐ Clientes Felices
+</h2>
 
 <div class="testGrid">
 
@@ -578,7 +838,8 @@ target="_blank">
 <h3>⭐⭐⭐⭐⭐</h3>
 
 <p>
-Best dealer in Miami. Amazing service.
+Best dealer in Miami.
+Amazing service.
 </p>
 
 </div>
@@ -607,30 +868,96 @@ Highly recommended dealership.
 
 </section>
 
-<footer>
+<!-- FINANCING -->
 
-<h3>The Best Cars Miami</h3>
+<section
+id="financing"
+class="testimonials"
+>
 
-<p>📞 754-214-1799</p>
+<h2>
+💰 Financing Available
+</h2>
 
-<p>📍 Hialeah, Florida</p>
+<p style="margin-bottom:25px;opacity:0.8;">
+
+Easy approval financing available.
+
+</p>
+
+<a
+class="heroBtn"
+href="tel:+17542141799"
+>
+
+Apply Now
+
+</a>
+
+</section>
+
+<!-- FLOATING WHATSAPP -->
+
+<a
+class="floatWA"
+href="https://wa.me/17542141799"
+target="_blank"
+>
+
+💬
+
+</a>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+<h3>
+The Best Cars Miami
+</h3>
+
+<br>
+
+<p>
+📞 754-214-1799
+</p>
+
+<br>
+
+<p>
+📍 970 E 4th St Hialeah FL 33010
+</p>
+
+<br>
+
+<p>
+Luxury Inventory • Rebuilt • Clean Title
+</p>
 
 </footer>
+
+<!-- FIREBASE -->
 
 <script type="module">
 
 import { initializeApp }
+
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
+
 getDatabase,
 ref,
 push,
 onValue,
 remove,
 update
+
 }
+
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+/* FIREBASE */
 
 const firebaseConfig = {
 
@@ -692,7 +1019,8 @@ let filter =
 document.getElementById("filter")
 .value;
 
-let grid = document.getElementById("grid");
+let grid =
+document.getElementById("grid");
 
 grid.innerHTML = "";
 
@@ -774,7 +1102,7 @@ window.openCar = function(i){
 let car = cars[i];
 
 let imgs = car.imgs
-.map(img=>`<img src="${img}" onclick="window.open('${img}')">`)
+.map(img=>`<img src="${img}">`)
 .join("");
 
 document.getElementById("modalBody").innerHTML = `
@@ -783,10 +1111,18 @@ document.getElementById("modalBody").innerHTML = `
 
 <br>
 
-<p class="price">$${car.price}</p>
+<p class="price">
+$${car.price}
+</p>
 
-<p style="margin-top:15px;line-height:1.6;opacity:0.9;">
+<p style="
+margin-top:15px;
+line-height:1.6;
+opacity:0.9;
+">
+
 ${car.description || ""}
+
 </p>
 
 <br>
@@ -810,19 +1146,23 @@ target="_blank">
 class="btn call"
 href="tel:+17542141799">
 
-📞 Llamar Ahora
+📞 Call Now
 
 </a>
 
 ${isAdmin ? `
 
-<button class="btn edit" onclick="editCar(${i})">
+<button
+class="btn edit"
+onclick="editCar(${i})">
 
 ✏ Editar
 
 </button>
 
-<button class="btn delete" onclick="deleteCar(${i})">
+<button
+class="btn delete"
+onclick="deleteCar(${i})">
 
 🗑 Borrar
 
@@ -832,7 +1172,8 @@ ${isAdmin ? `
 
 `;
 
-document.getElementById("modal").style.display="block";
+document.getElementById("modal")
+.style.display = "block";
 
 }
 
@@ -840,7 +1181,8 @@ document.getElementById("modal").style.display="block";
 
 window.closeModal = function(){
 
-document.getElementById("modal").style.display="none";
+document.getElementById("modal")
+.style.display = "none";
 
 }
 
@@ -872,7 +1214,7 @@ document.getElementById("imgs")
 .split(",")
 .map(x=>x.trim());
 
-if(!name || !price || !year || imgs.length===0){
+if(!name || !price || !year){
 
 alert("Completa todo");
 
@@ -882,7 +1224,9 @@ return;
 
 if(editKey){
 
-await update(ref(db,"cars/"+editKey),{
+await update(
+ref(db,"cars/"+editKey),
+{
 
 name,
 price,
@@ -926,22 +1270,29 @@ let car = cars[i];
 
 editKey = currentKeys[i];
 
-document.getElementById("name").value = car.name;
+document.getElementById("name").value =
+car.name;
 
-document.getElementById("price").value = car.price;
+document.getElementById("price").value =
+car.price;
 
-document.getElementById("year").value = car.year;
+document.getElementById("year").value =
+car.year;
 
 document.getElementById("description").value =
 car.description || "";
 
-document.getElementById("badge").value = car.badge;
+document.getElementById("badge").value =
+car.badge;
 
-document.getElementById("sold").value = car.sold;
+document.getElementById("sold").value =
+car.sold;
 
-document.getElementById("imgs").value = car.imgs.join(",");
+document.getElementById("imgs").value =
+car.imgs.join(",");
 
-document.getElementById("adminPanel").style.display="block";
+document.getElementById("adminPanel")
+.style.display = "block";
 
 closeModal();
 
@@ -953,7 +1304,9 @@ window.deleteCar = async function(i){
 
 if(confirm("Borrar carro?")){
 
-await remove(ref(db,"cars/"+currentKeys[i]));
+await remove(
+ref(db,"cars/"+currentKeys[i])
+);
 
 closeModal();
 
@@ -973,7 +1326,7 @@ document.getElementById("imgs").value="";
 
 }
 
-/* ADMIN LOGIN */
+/* ADMIN */
 
 let clicks = 0;
 
@@ -989,7 +1342,8 @@ if(pass==="Khloe070304"){
 
 isAdmin = true;
 
-document.getElementById("adminPanel").style.display="block";
+document.getElementById("adminPanel")
+.style.display = "block";
 
 render();
 
@@ -1005,7 +1359,7 @@ clicks=0;
 
 }
 
-/* LANG */
+/* LANGUAGE */
 
 let english = false;
 
@@ -1027,6 +1381,8 @@ document.getElementById("search")
 
 }
 
+/* APP */
+
 if ("serviceWorker" in navigator) {
 
 navigator.serviceWorker
@@ -1035,6 +1391,7 @@ navigator.serviceWorker
 .then(() => console.log("APP READY"));
 
 }
+
 </script>
 
 </body>
