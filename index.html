@@ -1,9 +1,7 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,106 +11,131 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
 body{
-font-family:Arial,sans-serif;
+margin:0;
+font-family:Arial;
 background:#050b16;
 color:white;
-min-height:100vh;
-background-image:url("ChatGPT Image 20 may 2026, 17_26_46.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+overflow-x:hidden;
 }
 
-body::before{
+/* HEADER */
+
+header{
+position:relative;
+padding:35px 20px;
+text-align:center;
+background:linear-gradient(90deg,#000814,#001d3d);
+overflow:hidden;
+}
+
+header::before{
 content:"";
-position:fixed;
+position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.75);
-z-index:-1;
-}
-
-header{
-background:linear-gradient(90deg,#000814,#001d3d);
-padding:30px;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:20px;
-flex-wrap:wrap;
-box-shadow:0 0 25px rgba(0,255,255,0.2);
+background:url("ChatGPT Image 20 may 2026, 17_26_46.png") center center no-repeat;
+background-size:350px;
+opacity:0.08;
 }
 
 .logo{
-width:100px;
-border-radius:12px;
-box-shadow:0 0 20px cyan;
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:15px;
+margin-right:15px;
+box-shadow:0 0 25px rgba(0,255,255,0.6);
+}
+
+.titleWrap{
+position:relative;
+z-index:2;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
 }
 
 header h1{
-font-size:55px;
+font-size:60px;
 font-weight:900;
+margin:0;
 text-transform:uppercase;
-background:linear-gradient(90deg,#00e5ff,#00ff99);
+letter-spacing:2px;
+font-family:Arial Black,sans-serif;
+
+background:linear-gradient(90deg,#00e5ff,#ffffff,#00ffcc);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
 text-shadow:
-0 0 10px cyan,
-0 0 30px cyan;
-cursor:pointer;
+0 0 10px rgba(0,255,255,0.9),
+0 0 20px rgba(0,255,255,0.7),
+0 0 40px rgba(0,255,255,0.5);
 }
+
+/* CONTROLS */
 
 .controls{
 padding:20px;
-display:flex;
-justify-content:center;
+text-align:center;
+background:#08111f;
 }
 
-.controls input{
-width:100%;
-max-width:400px;
-padding:15px;
+.langBtn{
+background:#00e5ff;
+border:none;
+padding:12px 18px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+margin-bottom:15px;
+box-shadow:0 0 15px rgba(0,229,255,0.5);
+}
+
+input{
+width:90%;
+max-width:350px;
+padding:14px;
 border:none;
 border-radius:12px;
-background:#0b1528;
+background:#111827;
 color:white;
 font-size:16px;
 outline:none;
+box-shadow:0 0 12px rgba(0,255,255,0.2);
 }
+
+/* GRID */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
-padding:20px;
+padding:25px;
 }
 
 .card{
-background:rgba(10,15,25,0.95);
+background:#101826;
 border-radius:15px;
 overflow:hidden;
 cursor:pointer;
 transition:0.3s;
-box-shadow:0 0 20px rgba(0,0,0,0.5);
+box-shadow:0 0 15px rgba(0,0,0,0.4);
 }
 
 .card:hover{
 transform:translateY(-5px);
-box-shadow:0 0 25px rgba(0,255,255,0.3);
+box-shadow:0 0 25px rgba(0,255,255,0.4);
 }
 
 .card img{
 width:100%;
-height:220px;
+height:200px;
 object-fit:cover;
 }
 
@@ -121,15 +144,18 @@ padding:15px;
 }
 
 .info h3{
-font-size:24px;
-margin-bottom:10px;
+margin:0;
+font-size:22px;
 }
 
 .price{
 color:#00ff99;
-font-size:22px;
 font-weight:bold;
+font-size:20px;
+margin-top:10px;
 }
+
+/* MODAL */
 
 .modal{
 display:none;
@@ -139,24 +165,21 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.95);
-overflow:auto;
 z-index:999;
-padding:20px;
+overflow:auto;
 }
 
 .modal-content{
 background:#111827;
-max-width:850px;
-margin:auto;
-padding:25px;
-border-radius:18px;
-position:relative;
+margin:40px auto;
+padding:20px;
+width:90%;
+max-width:750px;
+border-radius:20px;
 }
 
 .close{
-position:absolute;
-top:15px;
-right:20px;
+float:right;
 font-size:30px;
 cursor:pointer;
 color:red;
@@ -164,27 +187,29 @@ color:red;
 
 .slider img{
 width:100%;
+border-radius:15px;
 margin-bottom:15px;
-border-radius:12px;
 }
 
 .btn{
 display:block;
-width:100%;
 padding:14px;
-border:none;
-border-radius:10px;
 margin-top:10px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-text-decoration:none;
+border-radius:10px;
 text-align:center;
+text-decoration:none;
 color:white;
+font-weight:bold;
+border:none;
+cursor:pointer;
 }
 
 .whatsapp{
 background:#25D366;
+}
+
+.call{
+background:#00b0ff;
 }
 
 .edit{
@@ -199,73 +224,74 @@ background:#e53935;
 background:#ff9800;
 }
 
+/* ADMIN PANEL */
+
 #adminPanel{
 display:none;
 position:fixed;
-bottom:20px;
 right:20px;
-background:#0d1525;
+bottom:20px;
+width:300px;
+background:#111827;
 padding:20px;
 border-radius:15px;
-width:320px;
 z-index:1000;
+box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+#adminPanel h3{
+margin-top:0;
+text-align:center;
 }
 
 #adminPanel input{
 width:100%;
 margin-bottom:10px;
-padding:12px;
-border:none;
-border-radius:10px;
-background:#111c31;
-color:white;
 }
 
-@media(max-width:768px){
-
-header{
-flex-direction:column;
-}
-
-header h1{
-font-size:34px;
-text-align:center;
-}
-
+.fileText{
+font-size:13px;
+opacity:0.7;
+margin-top:-5px;
+margin-bottom:10px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-<img
-src="ChatGPT Image 20 may 2026, 17_26_46.png"
-class="logo"
->
+<div class="titleWrap">
+
+<img src="ChatGPT Image 20 may 2026, 17_26_46.png" class="logo">
 
 <h1 id="secret">
 THE BEST CARS MIAMI
 </h1>
 
+</div>
+
 </header>
 
 <div class="controls">
 
-<input
-id="search"
-placeholder="Buscar carro..."
-onkeyup="render()"
->
+<button class="langBtn" onclick="toggleLang()">
+🌎 English / Español
+</button>
+
+<br>
+
+<input id="search" placeholder="Buscar carro..." onkeyup="render()">
 
 </div>
 
 <div class="grid" id="grid"></div>
 
-<div id="modal" class="modal">
+<!-- MODAL -->
+
+<div class="modal" id="modal">
 
 <div class="modal-content">
 
@@ -276,6 +302,8 @@ onkeyup="render()"
 </div>
 
 </div>
+
+<!-- ADMIN PANEL -->
 
 <div id="adminPanel">
 
@@ -289,41 +317,34 @@ onkeyup="render()"
 
 <input type="file" id="fileInput" multiple accept="image/*">
 
+<div class="fileText">
+Selecciona fotos desde tu galería
+</div>
+
+<input id="imgs" placeholder="O pega URLs separadas por coma">
+
 <button class="btn add" onclick="saveCar()">
 Guardar Carro
 </button>
 
 </div>
 
+<!-- FIREBASE -->
+
 <script type="module">
 
 import { initializeApp }
-
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-
 getDatabase,
 ref,
 push,
 onValue,
 remove,
 update
-
 }
-
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-import {
-
-getStorage,
-ref as storageRef,
-uploadBytes,
-getDownloadURL
-
-}
-
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {
 
@@ -335,11 +356,13 @@ databaseURL: "https://thebestcars-miami-default-rtdb.firebaseio.com",
 
 projectId: "thebestcars-miami",
 
-storageBucket: "thebestcars-miami.appspot.com",
+storageBucket: "thebestcars-miami.firebasestorage.app",
 
 messagingSenderId: "323195561825",
 
-appId: "1:323195561825:web:f48bc075e99ba152c40720"
+appId: "1:323195561825:web:f48bc075e99ba152c40720",
+
+measurementId: "G-G4MN1SBMT6"
 
 };
 
@@ -347,14 +370,13 @@ const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 
-const storage = getStorage(app);
-
 const carsRef = ref(db,"cars");
 
 let cars = [];
 let currentKeys = [];
 let editKey = null;
-let isAdmin = false;
+
+/* LOAD */
 
 onValue(carsRef,(snapshot)=>{
 
@@ -372,13 +394,16 @@ render();
 
 });
 
+/* RENDER */
+
 window.render = function(){
 
-let grid = document.getElementById("grid");
-
-let search = document.getElementById("search")
+let search = document
+.getElementById("search")
 .value
 .toLowerCase();
+
+let grid = document.getElementById("grid");
 
 grid.innerHTML = "";
 
@@ -410,6 +435,8 @@ grid.innerHTML += `
 
 }
 
+/* OPEN */
+
 window.openCar = function(i){
 
 let car = cars[i];
@@ -422,43 +449,28 @@ document.getElementById("modalBody").innerHTML = `
 
 <h2>${car.name}</h2>
 
-<br>
-
 <p class="price">$${car.price}</p>
 
-<br>
+<p>Año: ${car.year}</p>
 
 <div class="slider">
-
 ${imgs}
-
 </div>
 
-<a
-class="btn whatsapp"
-href="https://wa.me/13050000000"
-target="_blank"
->
+<a class="btn whatsapp"
+href="https://wa.me/17542141799"
+target="_blank">
 
-WhatsApp
+📱 WhatsApp
 
 </a>
 
-${isAdmin ? `
+<a class="btn call"
+href="tel:+17542141799">
 
-<button class="btn edit" onclick="editCar(${i})">
+📞 Llamar Ahora
 
-✏ Editar
-
-</button>
-
-<button class="btn delete" onclick="deleteCar(${i})">
-
-🗑 Borrar
-
-</button>
-
-` : ""}
+</a>
 
 `;
 
@@ -466,11 +478,15 @@ document.getElementById("modal").style.display="block";
 
 }
 
+/* CLOSE */
+
 window.closeModal = function(){
 
 document.getElementById("modal").style.display="none";
 
 }
+
+/* SAVE */
 
 window.saveCar = async function(){
 
@@ -480,30 +496,44 @@ let price = document.getElementById("price").value;
 
 let year = document.getElementById("year").value;
 
-let files = document.getElementById("fileInput").files;
-
-if(!name || !price || !year || files.length===0){
-
-alert("Completa todo");
-
-return;
-
-}
+let imgsInput = document.getElementById("imgs").value;
 
 let imgs = [];
 
+if(imgsInput.trim() !== ""){
+
+imgs = imgsInput
+.split(",")
+.map(x=>x.trim());
+
+}
+
+const files = document.getElementById("fileInput").files;
+
 for(let file of files){
 
-let imgRef = storageRef(
-storage,
-"cars/"+Date.now()+file.name
-);
+let reader = new FileReader();
 
-await uploadBytes(imgRef,file);
+await new Promise(resolve=>{
 
-let url = await getDownloadURL(imgRef);
+reader.onload = function(e){
 
-imgs.push(url);
+imgs.push(e.target.result);
+
+resolve();
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+if(!name || !price || !year || imgs.length===0){
+
+alert("Completa todo");
+return;
 
 }
 
@@ -535,27 +565,11 @@ imgs
 
 clearForm();
 
-alert("Carro guardado");
+alert("Guardado");
 
 }
 
-window.editCar = function(i){
-
-let car = cars[i];
-
-editKey = currentKeys[i];
-
-document.getElementById("name").value = car.name;
-
-document.getElementById("price").value = car.price;
-
-document.getElementById("year").value = car.year;
-
-document.getElementById("adminPanel").style.display="block";
-
-closeModal();
-
-}
+/* DELETE */
 
 window.deleteCar = async function(i){
 
@@ -569,17 +583,19 @@ closeModal();
 
 }
 
+/* CLEAR */
+
 function clearForm(){
 
 document.getElementById("name").value="";
-
 document.getElementById("price").value="";
-
 document.getElementById("year").value="";
-
+document.getElementById("imgs").value="";
 document.getElementById("fileInput").value="";
 
 }
+
+/* SECRET ADMIN */
 
 let clicks = 0;
 
@@ -587,17 +603,13 @@ document.getElementById("secret").onclick = ()=>{
 
 clicks++;
 
-if(clicks>=5){
+if(clicks >= 5){
 
 let pass = prompt("Password");
 
-if(pass==="Khloe070304"){
-
-isAdmin = true;
+if(pass === "Khloe070304"){
 
 document.getElementById("adminPanel").style.display="block";
-
-render();
 
 }else{
 
@@ -605,11 +617,33 @@ alert("Incorrecto");
 
 }
 
-clicks=0;
+clicks = 0;
 
 }
 
-};
+}
+
+/* LANG */
+
+let english = false;
+
+window.toggleLang = function(){
+
+english = !english;
+
+if(english){
+
+document.getElementById("search")
+.placeholder = "Search car...";
+
+}else{
+
+document.getElementById("search")
+.placeholder = "Buscar carro...";
+
+}
+
+}
 
 </script>
 
